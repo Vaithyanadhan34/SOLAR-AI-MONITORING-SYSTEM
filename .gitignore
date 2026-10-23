@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+solar-ai-frontend/node_modules/
+solar-ai-frontend/dist/
+dist/
+.DS_Store
+
+# Large datasets and ML model weights (>100MB GitHub limit)
+*.csv
+*.pkl
+backend/models/*.csv
+backend/models/*.pkl
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

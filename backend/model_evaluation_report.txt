@@ -1,0 +1,69 @@
+================================================================================
+SOLAR AI MONITORING SYSTEM — MODEL EVALUATION REPORT
+Generated: 2026-10-20 12:08:12
+Execution Duration: 3.97 seconds
+================================================================================
+
+1. DATASET SPECIFICATIONS
+--------------------------------------------------------------------------------
+- Primary Dataset Path : E:\SEM 7\EVS PROJECT\backend\models\maintenance_analysis_results.csv
+- Secondary Dataset    : E:\SEM 7\EVS PROJECT\backend\models\anomaly_results.csv
+- Total Records        : 1,195,267 operational observations
+- Timeseries Range     : 2020-01-01 08:15:00 to 2022-04-23 17:45:00
+- Target Variable      : FutureGeneration / ActualGeneration
+- Target Unit          : Kilowatts (kW) - Instantaneous Solar Power Output
+- Monitored Facilities : Campus 2, Sites 1, 2, 3 (100 panels, 25.0 kWp nominal)
+- Usable Columns       : Timestamp, CampusKey, SiteKey, ActualGeneration, PredictedGeneration
+
+2. RANDOM FOREST GENERATION PREDICTION MODEL
+--------------------------------------------------------------------------------
+- Model Architecture   : RandomForestRegressor (50 Estimators, Max Depth 20)
+- Input Schema         : 21 Features (Operational lags, timestamp decomposition, environmental)
+- Target Metric        : FutureGeneration (kW)
+- Training Records     : 300,000 samples (chronological split)
+- Held-Out Test Records: 239,054 samples
+
+Actual Held-Out Evaluation Metrics:
+- Mean Absolute Error (MAE)            : 1.4293 kW
+- Root Mean Square Error (RMSE)        : 3.2989 kW
+- Mean Absolute Percentage Error (MAPE): 6.84 %
+- Coefficient of Determination (R²)    : 0.9285 (92.85%)
+
+Baseline Comparison (Evaluated across 1,195,267 operational records):
+- Random Forest Model       : MAE = 1.2841 kW | RMSE = 2.8511 kW | R² = 0.9352
+- Persistence Baseline (t-1): MAE = 1.3111 kW | RMSE = 3.0556 kW | R² = 0.9256
+- Climatology / Mean Baseline: MAE = 6.4514 kW | RMSE = 11.2037 kW | R² = 0.0000
+- Relative Performance Gain : RF reduces MAE by 2.1% over Persistence Baseline
+
+3. ISOLATION FOREST ANOMALY DETECTION MODEL
+--------------------------------------------------------------------------------
+- Model Architecture   : IsolationForest (100 Estimators, Contamination = 0.02, max_samples = 256)
+- Input Schema         : 18 Features (Power dynamics, generation rate-of-change, temporal cycles)
+- Contamination Rate   : 0.02 (Identifies top 2% statistical deviations in solar curve)
+- Evaluation Status    : Validated on 150,000 operational samples; empirical anomaly rate = 2.00%
+- Physical Attribution : Statistical pattern anomaly flagged; physical cause inferred via Decision Layer
+
+4. MAINTENANCE DECISION LAYER CONFIGURATION
+--------------------------------------------------------------------------------
+- Decision Categories  : NORMAL, CLEANING REVIEW, INSPECTION
+- Loss Thresholds      :
+    * Performance Loss < 8.0%  AND Anomaly == Normal  --> NORMAL (Clean operation)
+    * Performance Loss 8.0-15% AND Anomaly == Normal  --> CLEANING REVIEW (Gradual soiling / dust)
+    * Performance Loss >= 15%  AND Anomaly == Normal  --> CLEANING REVIEW (Significant soiling loss)
+    * Performance Loss >= 15%  AND Anomaly == Anomaly AND Sharp Drop --> INSPECTION (Inverter/string fault)
+- Base Unit            : Power in Kilowatts (kW), Energy in Kilowatt-hours (kWh)
+
+5. MODEL ARTIFACT LOCATIONS
+--------------------------------------------------------------------------------
+- Random Forest Model  : E:\SEM 7\EVS PROJECT\backend\models\solar_energy_random_forest.pkl
+- Isolation Forest     : E:\SEM 7\EVS PROJECT\backend\models\anomaly_model.pkl
+- Feature Schema (RF)  : E:\SEM 7\EVS PROJECT\backend\models\feature_columns.pkl
+- Feature Schema (ISO) : E:\SEM 7\EVS PROJECT\backend\models\anomaly_features.pkl
+- Metrics Metadata     : E:\SEM 7\EVS PROJECT\backend\models\model_metrics.pkl
+
+6. OPERATIONAL LIMITATIONS & WARNINGS
+--------------------------------------------------------------------------------
+- The model operates strictly on instantaneous power (kW) and 15-minute intervals.
+- The Isolation Forest detects statistical anomalies; it does not physically measure dust thickness.
+- Recommendations (CLEANING REVIEW vs INSPECTION) are condition-based decision guidance.
+================================================================================
