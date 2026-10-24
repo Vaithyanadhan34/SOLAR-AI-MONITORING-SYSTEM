@@ -12,6 +12,7 @@ from flask_cors import CORS
 import pandas as pd
 import numpy as np
 import joblib
+import warnings
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -296,11 +297,13 @@ def resolve_site_info(payload_or_args):
 
     return 2, 1, SITE_METADATA[(2, 1)]
 
-def get_diurnal_weather_for_step(dt):
-    """Calculates diurnal cycle ambient weather (temperature, humidity, wind) for a given timestamp."""
-    hour_frac = dt.hour + dt.minute / 60.0
+import functools
+
+@functools.lru_cache(maxsize=4096)
+def _calc_diurnal_weather(hour, minute, day_of_year):
+    hour_frac = hour + minute / 60.0
     solar_elev = max(0.0, float(np.sin(np.pi * np.clip((hour_frac - 6.0) / 12.0, 0, 1))))
-    season_adj = 3.0 * float(np.sin(2 * np.pi * (dt.timetuple().tm_yday - 80) / 365.0))
+    season_adj = 3.0 * float(np.sin(2 * np.pi * (day_of_year - 80) / 365.0))
     air_temp = round(22.0 + season_adj + 10.0 * solar_elev, 1)
     rel_hum = round(max(20.0, min(90.0, 75.0 - 35.0 * solar_elev)), 1)
     wind_spd = round(2.5 + 1.2 * solar_elev, 1)
@@ -314,6 +317,10 @@ def get_diurnal_weather_for_step(dt):
         'ApparentTemperature': apparent_temp,
         'WindDirection': 180.0
     }
+
+def get_diurnal_weather_for_step(dt):
+    """Calculates diurnal cycle ambient weather (temperature, humidity, wind) for a given timestamp."""
+    return _calc_diurnal_weather(dt.hour, dt.minute, dt.timetuple().tm_yday)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -957,7 +964,7 @@ def forecast_solar():
     if key not in HISTORY_INDEX:
         return jsonify({"success": False, "error": f"No historical records found for site {site_meta.get('name', 'specified')}."}), 404
 
-    ts_str = payload.get('timestamp') or payload.get('Timestamp')
+    ts_str = payload.get('timestamp') or payload.get('Timestamp') or payload.get('start_timestamp')
     if not ts_str:
         return jsonify({"success": False, "error": "Timestamp is required for forecast."}), 400
 
@@ -969,8 +976,8 @@ def forecast_solar():
 
     try:
         horizon_hours = int(payload.get('horizon_hours', 24))
-        if horizon_hours < 1 or horizon_hours > 24:
-            return jsonify({"success": False, "error": "horizon_hours must be between 1 and 24."}), 400
+        if horizon_hours < 1 or horizon_hours > 168:
+            return jsonify({"success": False, "error": "horizon_hours must be between 1 and 168."}), 400
     except (ValueError, TypeError):
         return jsonify({"success": False, "error": "horizon_hours must be a valid integer."}), 400
 
@@ -1010,13 +1017,23 @@ def forecast_solar():
     # Lag ring buffer tracking recursive predictions
     lag_buffer = [gen_2h, gen_1h, gen_30m, prev_gen]
 
+    # Pre-select tree estimators for fast percentile spread
+    tree_subset = rf_model.estimators_[::5] if hasattr(rf_model, 'estimators_') else []
+
     curr_dt = start_dt
+    peak_kw = 0.0
+    peak_ts = None
+    daily_buckets = {}
+
     for step in range(1, num_steps + 1):
         curr_dt = curr_dt + datetime.timedelta(minutes=30)
         curr_hour = curr_dt.hour
         curr_minute = curr_dt.minute
+        date_str = curr_dt.strftime('%Y-%m-%d')
+        ts_str_formatted = curr_dt.strftime('%Y-%m-%d %H:%M:%S')
 
-        # Calculate future weather as the average of the same time of day over the previous 7 days from history
+        # Calculate future weather as the average of the same time of day over the previous 7 days
+        # Pre-calculated diurnal model evaluation
         past_temps = []
         past_hums = []
         past_winds = []
@@ -1077,24 +1094,46 @@ def forecast_solar():
                 'GenerationChangePercent': gen_change_pct,
                 **time_dict
             }
-            step_df = pd.DataFrame([step_params])[feature_columns]
-            pred_raw = float(rf_model.predict(step_df)[0])
-            pred_kw = max(0.0, pred_raw)
+            # Fast numpy array prediction without DataFrame overhead
+            arr_input = np.array([[step_params[c] for c in feature_columns]], dtype=np.float32)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", category=UserWarning)
+                pred_raw = float(rf_model.predict(arr_input)[0])
+                pred_kw = max(0.0, pred_raw)
 
-            # Spread across trees
-            if hasattr(rf_model, 'estimators_') and len(rf_model.estimators_) > 0:
-                t_preds = [float(tree.predict(step_df)[0]) for tree in rf_model.estimators_]
-                lower_kw = max(0.0, float(np.percentile(t_preds, 10)))
-                upper_kw = max(pred_kw, float(np.percentile(t_preds, 90)))
-            else:
-                lower_kw = max(0.0, pred_kw * 0.9)
-                upper_kw = pred_kw * 1.1
+                # Spread across tree subset
+                if tree_subset:
+                    t_preds = [float(t.predict(arr_input)[0]) for t in tree_subset]
+                    lower_kw = max(0.0, float(np.percentile(t_preds, 10)))
+                    upper_kw = max(pred_kw, float(np.percentile(t_preds, 90)))
+                else:
+                    lower_kw = max(0.0, pred_kw * 0.9)
+                    upper_kw = pred_kw * 1.1
+
+        # Track next peak
+        if pred_kw > peak_kw:
+            peak_kw = pred_kw
+            peak_ts = ts_str_formatted
 
         # Push predicted generation to recursive buffer
         lag_buffer.append(pred_kw)
 
+        # Aggregate daily kWh
+        if date_str not in daily_buckets:
+            daily_buckets[date_str] = {
+                'date': date_str,
+                'predicted_kWh': 0.0,
+                'lower_kWh': 0.0,
+                'upper_kWh': 0.0,
+                'peak_kW': 0.0,
+            }
+        daily_buckets[date_str]['predicted_kWh'] += pred_kw * 0.5
+        daily_buckets[date_str]['lower_kWh'] += lower_kw * 0.5
+        daily_buckets[date_str]['upper_kWh'] += upper_kw * 0.5
+        daily_buckets[date_str]['peak_kW'] = max(daily_buckets[date_str]['peak_kW'], pred_kw)
+
         forecast_steps.append({
-            "timestamp": curr_dt.strftime('%Y-%m-%d %H:%M:%S'),
+            "timestamp": ts_str_formatted,
             "predicted_kW": round(pred_kw, 2),
             "lower_kW": round(lower_kw, 2),
             "upper_kW": round(upper_kw, 2),
@@ -1105,14 +1144,33 @@ def forecast_solar():
             }
         })
 
+    daily_forecast = []
+    for d_k in sorted(daily_buckets.keys()):
+        b = daily_buckets[d_k]
+        daily_forecast.append({
+            "date": b['date'],
+            "predicted_kWh": round(b['predicted_kWh'], 1),
+            "lower_kWh": round(b['lower_kWh'], 1),
+            "upper_kWh": round(b['upper_kWh'], 1),
+            "peak_kW": round(b['peak_kW'], 2),
+        })
+
+    is_rough = horizon_hours > 24
+
     return jsonify({
         "success": True,
         "site": site_meta,
         "start_timestamp": start_dt.strftime('%Y-%m-%d %H:%M:%S'),
         "horizon_hours": horizon_hours,
         "steps_count": len(forecast_steps),
+        "forecast_type": "rough estimate" if is_rough else "standard forecast",
         "weather_assumption": "Average of the same time of day over the previous 7 days from history",
-        "forecast": forecast_steps
+        "next_peak": {
+            "peak_kW": round(peak_kw, 2),
+            "timestamp": peak_ts or (forecast_steps[0]['timestamp'] if forecast_steps else None)
+        },
+        "forecast": forecast_steps,
+        "daily_forecast": daily_forecast
     })
 
 @app.route('/api/history', methods=['GET'])
