@@ -1,7 +1,7 @@
 ================================================================================
 SOLAR AI MONITORING SYSTEM — MODEL EVALUATION REPORT
-Generated: 2026-10-20 12:08:12
-Execution Duration: 3.97 seconds
+Generated: 2026-10-23 15:52:06
+Execution Duration: 10.50 seconds
 ================================================================================
 
 1. DATASET SPECIFICATIONS
@@ -10,60 +10,73 @@ Execution Duration: 3.97 seconds
 - Secondary Dataset    : E:\SEM 7\EVS PROJECT\backend\models\anomaly_results.csv
 - Total Records        : 1,195,267 operational observations
 - Timeseries Range     : 2020-01-01 08:15:00 to 2022-04-23 17:45:00
-- Target Variable      : FutureGeneration / ActualGeneration
-- Target Unit          : Kilowatts (kW) - Instantaneous Solar Power Output
+- Target Variable      : ActualGeneration / FutureGeneration
+- Target Unit          : Kilowatts (kW) — Instantaneous Solar Power Output
 - Monitored Facilities : Campus 2, Sites 1, 2, 3 (100 panels, 25.0 kWp nominal)
 - Usable Columns       : Timestamp, CampusKey, SiteKey, ActualGeneration, PredictedGeneration
 
-2. RANDOM FOREST GENERATION PREDICTION MODEL
+2. LAG DEPENDENCE & ABLATION STUDY (NOWCAST VS. PHYSICAL BASELINE)
 --------------------------------------------------------------------------------
-- Model Architecture   : RandomForestRegressor (50 Estimators, Max Depth 20)
-- Input Schema         : 21 Features (Operational lags, timestamp decomposition, environmental)
-- Target Metric        : FutureGeneration (kW)
-- Training Records     : 300,000 samples (chronological split)
-- Held-Out Test Records: 239,054 samples
+Rationale:
+Models relying on previous generation (PreviousGeneration, lags) act as short-term
+nowcast estimators. When solar panels experience gradual soiling over weeks, previous
+generation is already depressed, causing lag-based models to predict a depressed value
+and conceal soiling loss. Therefore, two models are maintained:
 
-Actual Held-Out Evaluation Metrics:
-- Mean Absolute Error (MAE)            : 1.4293 kW
-- Root Mean Square Error (RMSE)        : 3.2989 kW
-- Mean Absolute Percentage Error (MAPE): 6.84 %
-- Coefficient of Determination (R²)    : 0.9285 (92.85%)
+Model A — Random Forest WITH Lag Features (Short-Term Nowcast Estimate):
+- Input Schema         : 21 Features (Operational lags + weather + capacity + time)
+- Test MAE             : 2.6036 kW
+- Test RMSE            : 4.1004 kW
+- Test R²              : 0.8618
+- Test MAPE            : 27.98 %
+- Role in System       : Provides short-term generation nowcast and prediction interval spread.
 
-Baseline Comparison (Evaluated across 1,195,267 operational records):
-- Random Forest Model       : MAE = 1.2841 kW | RMSE = 2.8511 kW | R² = 0.9352
-- Persistence Baseline (t-1): MAE = 1.3111 kW | RMSE = 3.0556 kW | R² = 0.9256
-- Climatology / Mean Baseline: MAE = 6.4514 kW | RMSE = 11.2037 kW | R² = 0.0000
-- Relative Performance Gain : RF reduces MAE by 2.1% over Persistence Baseline
+Model B — Random Forest WITHOUT Lag Features (Physical Expected Baseline):
+- Input Schema         : 17 Features (Weather, system capacity, and solar geometry ONLY)
+- Test MAE             : 4.7123 kW
+- Test RMSE            : 6.6359 kW
+- Test R²              : 0.6380
+- Role in System       : Serves as the unsoiled physical baseline to calculate true performance loss.
 
-3. ISOLATION FOREST ANOMALY DETECTION MODEL
+Model C — HistGradientBoosting Comparison (Alternative Non-Linear Baseline):
+- Input Schema         : 17 Features (No lags)
+- Test MAE             : 5.4616 kW
+- Test RMSE            : 7.0838 kW
+- Test R²              : 0.5874
+
+3. ISOLATION FOREST & SYNTHETIC FAULT VALIDATION
 --------------------------------------------------------------------------------
 - Model Architecture   : IsolationForest (100 Estimators, Contamination = 0.02, max_samples = 256)
-- Input Schema         : 18 Features (Power dynamics, generation rate-of-change, temporal cycles)
-- Contamination Rate   : 0.02 (Identifies top 2% statistical deviations in solar curve)
-- Evaluation Status    : Validated on 150,000 operational samples; empirical anomaly rate = 2.00%
-- Physical Attribution : Statistical pattern anomaly flagged; physical cause inferred via Decision Layer
+- Input Schema         : 18 Features (Power dynamics, rate of change, temporal cycles)
+- Empirical Anomaly Rate: 2.00% on standard operating distribution
+- Synthetic Fault Injection Test:
+  * Methodology        : Injected 50% sudden power drops into a clean COPY of daylight test records
+  * Sample Size        : 10417 records
+  * Combined Detection : 100.00% Recall (Labeled: Synthetic Fault Experiment)
+  * Attribution Rule   : Statistical pattern anomaly flagged; physical cause inferred via Decision Layer
 
-4. MAINTENANCE DECISION LAYER CONFIGURATION
+4. MAINTENANCE DECISION LAYER THRESHOLDS
 --------------------------------------------------------------------------------
-- Decision Categories  : NORMAL, CLEANING REVIEW, INSPECTION
-- Loss Thresholds      :
-    * Performance Loss < 8.0%  AND Anomaly == Normal  --> NORMAL (Clean operation)
-    * Performance Loss 8.0-15% AND Anomaly == Normal  --> CLEANING REVIEW (Gradual soiling / dust)
-    * Performance Loss >= 15%  AND Anomaly == Normal  --> CLEANING REVIEW (Significant soiling loss)
-    * Performance Loss >= 15%  AND Anomaly == Anomaly AND Sharp Drop --> INSPECTION (Inverter/string fault)
-- Base Unit            : Power in Kilowatts (kW), Energy in Kilowatt-hours (kWh)
+Derived from empirical percentiles of the 1,195,267 operational records:
+- NORMAL              : Performance Loss < 8.0%  (Below 60th percentile of loss distribution)
+- CLEANING REVIEW     : Performance Loss >= 15.0% (75th percentile) under normal operating curve
+- INSPECTION          : Sudden drop > 30% deviation or severe statistical anomaly flagged
+- Energy Loss Metric  : lost_kWh = max(expected - actual, 0) * interval_hours (kW to kWh)
+- CO2 Emissions Metric: lost_kWh * 0.716 kg CO2/kWh (Central Electricity Authority India Baseline)
 
-5. MODEL ARTIFACT LOCATIONS
+5. MODEL ARTIFACT PATHS
 --------------------------------------------------------------------------------
-- Random Forest Model  : E:\SEM 7\EVS PROJECT\backend\models\solar_energy_random_forest.pkl
+- Short-Term RF Model  : E:\SEM 7\EVS PROJECT\backend\models\solar_energy_random_forest.pkl
+- Expected Baseline RF : E:\SEM 7\EVS PROJECT\backend\models\expected_generation_rf.pkl
 - Isolation Forest     : E:\SEM 7\EVS PROJECT\backend\models\anomaly_model.pkl
-- Feature Schema (RF)  : E:\SEM 7\EVS PROJECT\backend\models\feature_columns.pkl
-- Feature Schema (ISO) : E:\SEM 7\EVS PROJECT\backend\models\anomaly_features.pkl
-- Metrics Metadata     : E:\SEM 7\EVS PROJECT\backend\models\model_metrics.pkl
+- Feature Ranges JSON  : E:\SEM 7\EVS PROJECT\backend\models\training_feature_ranges.json
+- RF Features (21)     : E:\SEM 7\EVS PROJECT\backend\models\feature_columns.pkl
+- Expected Features (17: E:\SEM 7\EVS PROJECT\backend\models\expected_feature_columns.pkl
+- IF Features (18)     : E:\SEM 7\EVS PROJECT\backend\models\anomaly_features.pkl
 
 6. OPERATIONAL LIMITATIONS & WARNINGS
 --------------------------------------------------------------------------------
-- The model operates strictly on instantaneous power (kW) and 15-minute intervals.
-- The Isolation Forest detects statistical anomalies; it does not physically measure dust thickness.
+- Instantaneous readings are in Kilowatts (kW); energy is in Kilowatt-hours (kWh).
+- Water savings and CO2 values are scenario estimates with stated assumptions, not physical meterings.
 - Recommendations (CLEANING REVIEW vs INSPECTION) are condition-based decision guidance.
 ================================================================================
