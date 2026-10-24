@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Download, RefreshCw } from 'lucide-react';
 import { analyzeBatch } from '../services/api';
 
-export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
+export default function BatchAnalysis({ onBatchResult, isBackendConnected, onClose }) {
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [batchResult, setBatchResult] = useState(null);
@@ -13,11 +12,11 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
     e.preventDefault();
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       const dropped = e.dataTransfer.files[0];
-      if (dropped.name.endsWith('.csv')) {
+      if (dropped.name.toLowerCase().endsWith('.csv')) {
         setFile(dropped);
         setErrorMessage(null);
       } else {
-        setErrorMessage('Please upload a valid .csv file.');
+        setErrorMessage('Please upload a file ending with .csv');
       }
     }
   };
@@ -46,7 +45,7 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'solar_batch_sample.csv');
+    link.setAttribute('download', 'solar_readings_sample.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -55,7 +54,7 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
-      setErrorMessage('Please select or drag a CSV file first.');
+      setErrorMessage('Please choose a CSV file first.');
       return;
     }
 
@@ -73,26 +72,22 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
           onBatchResult(data);
         }
       } else {
-        setErrorMessage(data?.error || 'Batch analysis failed.');
+        setErrorMessage(data?.error || 'Unable to process CSV file. Please check column headers.');
       }
     } catch (err) {
-      setErrorMessage(err.message || 'Error processing batch upload.');
+      setErrorMessage(err.message || 'Error processing CSV file.');
     } finally {
       setIsUploading(false);
     }
   };
 
   return (
-    <div className="panel">
-      <div className="panel-header">
-        <h2 className="panel-title">Batch Operational CSV Upload</h2>
-        <p className="panel-subtitle">
-          Upload multi-interval timeseries data to evaluate Performance Ratio (PR), anomaly timelines, and degradation trends.
-        </p>
-      </div>
+    <div>
+      <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
+        If you have readings recorded over several hours, upload your CSV file to check them together and view the timeline chart.
+      </p>
 
-      <form onSubmit={handleSubmit} className="form">
-        {/* Drag and Drop Box */}
+      <form onSubmit={handleSubmit}>
         <div
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
@@ -100,12 +95,11 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
           style={{
             border: '2px dashed var(--border-color)',
             borderRadius: 'var(--radius-sm)',
-            padding: '1.5rem',
+            padding: '1.75rem 1rem',
             textAlign: 'center',
             cursor: 'pointer',
-            background: 'var(--bg-subtle)',
-            transition: 'border-color 0.15s ease',
-            marginBottom: '0.75rem',
+            backgroundColor: 'var(--bg-subtle)',
+            marginBottom: '1rem',
           }}
         >
           <input
@@ -115,116 +109,79 @@ export default function BatchAnalysis({ onBatchResult, isBackendConnected }) {
             onChange={handleFileSelect}
             style={{ display: 'none' }}
           />
-          <UploadCloud size={32} style={{ color: 'var(--brand-primary)', margin: '0 auto 0.5rem' }} />
-          <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-            {file ? file.name : 'Click to select or drag & drop CSV file'}
+          <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+            {file ? file.name : 'Click to choose a CSV file, or drag and drop it here'}
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            Columns required: Timestamp, SolarGeneration (kWp, AirTemperature optional)
+          <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>
+            Columns expected: Timestamp, SolarGeneration, AirTemperature, RelativeHumidity, WindSpeed
           </div>
         </div>
 
-        {/* Action Controls */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <button
             type="button"
             onClick={downloadSampleCsv}
-            className="btn-secondary"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              fontSize: '0.75rem',
-              padding: '0.45rem 0.65rem',
-            }}
+            className="btn-fill-example"
+            style={{ margin: 0 }}
           >
-            <Download size={13} />
-            <span>Download Sample CSV</span>
+            Download sample CSV
           </button>
 
           <button
             type="submit"
-            className="submit-button"
-            style={{ width: 'auto', padding: '0.45rem 1.25rem', margin: 0 }}
+            className="btn-primary-check"
+            style={{ width: 'auto', padding: '0.65rem 1.25rem', fontSize: '0.95rem' }}
             disabled={!file || isUploading || !isBackendConnected}
           >
-            {isUploading ? (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <RefreshCw size={13} className="spin" /> Processing...
-              </span>
-            ) : (
-              'Run Batch Analysis'
-            )}
+            {isUploading ? 'Checking readings...' : 'Check readings'}
           </button>
         </div>
 
         {errorMessage && (
-          <div
-            style={{
-              padding: '0.65rem',
-              background: 'rgba(239, 68, 68, 0.1)',
-              border: '1px solid var(--status-danger-border)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--status-danger-text)',
-              fontSize: '0.775rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            <AlertTriangle size={14} />
-            <span>{errorMessage}</span>
+          <div className="error-banner" style={{ marginBottom: '1rem' }} role="alert">
+            {errorMessage}
           </div>
         )}
       </form>
 
-      {/* Batch Results Summary Display */}
-      {batchResult && batchResult.metrics && (
-        <div style={{ marginTop: '1rem', borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--status-good-text)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.75rem' }}>
-            <CheckCircle2 size={16} />
-            <span>Batch Analysis Complete ({batchResult.processed_rows} intervals processed)</span>
+      {batchResult && (
+        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.25rem', marginTop: '1rem' }}>
+          <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+            Batch Check Complete: {batchResult.processed_rows} readings processed
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.5rem', marginBottom: '0.75rem' }}>
-            <div className="metric-cell" style={{ padding: '0.6rem' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Daily Performance Ratio</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--brand-primary)' }}>
-                {batchResult.metrics.performance_ratio?.toFixed(2)}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div style={{ background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Total power recorded</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                {batchResult.metrics?.total_actual_kwh?.toFixed(1) || '0.0'} kWh
               </div>
             </div>
 
-            <div className="metric-cell" style={{ padding: '0.6rem' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Total Generation</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                {batchResult.metrics.total_actual_kwh?.toFixed(1)} <span style={{ fontSize: '0.75rem' }}>kWh</span>
+            <div style={{ background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Estimated energy lost</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--amber-700)' }}>
+                {batchResult.metrics?.total_lost_kwh?.toFixed(1) || '0.0'} kWh
               </div>
             </div>
 
-            <div className="metric-cell" style={{ padding: '0.6rem' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Total Lost Energy</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--status-warning-text)' }}>
-                {batchResult.metrics.total_lost_kwh?.toFixed(1)} <span style={{ fontSize: '0.75rem' }}>kWh</span>
-              </div>
-            </div>
-
-            <div className="metric-cell" style={{ padding: '0.6rem' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Avoided / Lost CO₂</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--status-good-text)' }}>
-                {batchResult.metrics.total_lost_co2_kg?.toFixed(1)} <span style={{ fontSize: '0.75rem' }}>kg</span>
+            <div style={{ background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Unusual readings</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                {batchResult.metrics?.anomaly_count || 0}
               </div>
             </div>
           </div>
 
-          {/* Trend & Anomaly Diagnosis */}
-          <div style={{ padding: '0.65rem 0.8rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontSize: '0.75rem' }}>
-            <div style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-              Trend Diagnosis: {batchResult.metrics.trend_diagnosis}
-            </div>
-            <div style={{ color: 'var(--text-muted)' }}>
-              Rolling Loss Slope: <strong>{batchResult.metrics.rolling_loss_slope}</strong> • Anomalies Flagged: <strong>{batchResult.metrics.anomaly_count}</strong>
-            </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <button
+              type="button"
+              onClick={onClose}
+              className="btn-fill-example"
+              style={{ margin: 0 }}
+            >
+              Close and view timeline chart
+            </button>
           </div>
         </div>
       )}

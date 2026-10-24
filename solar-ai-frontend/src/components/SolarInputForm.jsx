@@ -1,64 +1,27 @@
 import React, { useState } from 'react';
-import { Database, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
 import { fetchDatasetValues } from '../services/api';
 
 const SOLAR_SITES = [
-  { id: 'site-1', name: 'Site 1 (Campus 2 — 25 kWp)', campusKey: 2, siteKey: 1, capacity: '25.0', panels: '100' },
-  { id: 'site-2', name: 'Site 2 (Campus 2 — 20 kWp)', campusKey: 2, siteKey: 2, capacity: '20.0', panels: '80' },
-  { id: 'site-3', name: 'Site 3 (Campus 2 — 15 kWp)', campusKey: 2, siteKey: 3, capacity: '15.0', panels: '60' },
-  { id: 'site-4', name: 'Site 11 (Campus 3 — 100 kWp)', campusKey: 3, siteKey: 11, capacity: '100.0', panels: '400' },
-  { id: 'site-5', name: 'Site 27 (Campus 1 — 100 kWp)', campusKey: 1, siteKey: 27, capacity: '100.0', panels: '400' },
+  { id: 'site-1', name: 'Site 1 (Campus 2)', campusKey: 2, siteKey: 1, capacity: '25.0', panels: '100' },
+  { id: 'site-2', name: 'Site 2 (Campus 2)', campusKey: 2, siteKey: 2, capacity: '20.0', panels: '80' },
+  { id: 'site-3', name: 'Site 3 (Campus 2)', campusKey: 2, siteKey: 3, capacity: '15.0', panels: '60' },
+  { id: 'site-4', name: 'Site 11 (Campus 3)', campusKey: 3, siteKey: 11, capacity: '100.0', panels: '400' },
+  { id: 'site-5', name: 'Site 27 (Campus 1)', campusKey: 1, siteKey: 27, capacity: '100.0', panels: '400' },
 ];
 
-const SCENARIOS = [
-  {
-    id: 'normal',
-    name: 'Normal Day',
-    siteId: 'site-1',
-    data: {
-      timestamp: '2021-06-15T13:30',
-      SolarGeneration: '8.81',
-      AirTemperature: '27.5',
-      RelativeHumidity: '50',
-      WindSpeed: '3.2',
-    },
-  },
-  {
-    id: 'soiling',
-    name: 'Possible Soiling',
-    siteId: 'site-1',
-    data: {
-      timestamp: '2020-01-01T10:15',
-      SolarGeneration: '11.5',
-      AirTemperature: '28.0',
-      RelativeHumidity: '45',
-      WindSpeed: '2.5',
-    },
-  },
-  {
-    id: 'fault',
-    name: 'Equipment Anomaly / Sudden Drop',
-    siteId: 'site-1',
-    data: {
-      timestamp: '2020-01-04T15:15',
-      SolarGeneration: '3.96',
-      AirTemperature: '26.0',
-      RelativeHumidity: '50',
-      WindSpeed: '2.5',
-    },
-  },
-];
-
-export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnected }) {
+export default function SolarInputForm({
+  onAnalyze,
+  isLoading,
+  isBackendConnected,
+  onOpenBatchModal,
+}) {
   const [selectedSiteId, setSelectedSiteId] = useState('site-1');
-  const [selectedScenario, setSelectedScenario] = useState('normal');
-  const [isAutoFilling, setIsAutoFilling] = useState(false);
-  const [autoFillMessage, setAutoFillMessage] = useState(null);
+  const [isFetchingExample, setIsFetchingExample] = useState(false);
 
-  // User enters only current data as strings for seamless typing
+  // Four typed fields kept as strings while typing
   const [inputs, setInputs] = useState({
     timestamp: '2021-06-15T13:30',
-    SolarGeneration: '8.81',
+    SolarGeneration: '8.8',
     AirTemperature: '27.5',
     RelativeHumidity: '50',
     WindSpeed: '3.2',
@@ -66,69 +29,53 @@ export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnecte
 
   const [formErrors, setFormErrors] = useState({});
 
-  const handleScenarioChange = (e) => {
-    const scenarioId = e.target.value;
-    setSelectedScenario(scenarioId);
-    const scenario = SCENARIOS.find((s) => s.id === scenarioId);
-    if (scenario) {
-      setSelectedSiteId(scenario.siteId);
-      setInputs({ ...scenario.data });
-      setFormErrors({});
-      setAutoFillMessage(null);
-    }
-  };
-
-  const handleSiteChange = (e) => {
-    setSelectedSiteId(e.target.value);
-    setAutoFillMessage(null);
-  };
-
   const handleInputChange = (field, value) => {
     setInputs((prev) => ({ ...prev, [field]: value }));
     if (formErrors[field]) {
       setFormErrors((prev) => ({ ...prev, [field]: null }));
     }
-    setAutoFillMessage(null);
   };
 
-  const handleUseDatasetValues = async () => {
-    const site = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
-    if (!inputs.timestamp) {
-      setFormErrors((prev) => ({ ...prev, timestamp: 'Select a timestamp first.' }));
-      return;
-    }
+  const currentSite = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
 
-    setIsAutoFilling(true);
-    setAutoFillMessage(null);
-
+  // One dropdown-free "Fill example values" button
+  const handleFillExampleValues = async () => {
+    setIsFetchingExample(true);
     try {
-      const data = await fetchDatasetValues(site.campusKey, site.siteKey, inputs.timestamp);
-      if (data && data.success && data.found) {
-        setInputs((prev) => ({
-          ...prev,
-          SolarGeneration: String(data.SolarGeneration || data.actual_generation || ''),
-          AirTemperature: String(data.AirTemperature || ''),
-          RelativeHumidity: String(data.RelativeHumidity || ''),
-          WindSpeed: String(data.WindSpeed || ''),
-        }));
-        setAutoFillMessage({
-          type: 'success',
-          text: `Retrieved historical telemetry for ${site.name} at ${data.timestamp}.`,
-        });
-        setFormErrors({});
-      } else {
-        setAutoFillMessage({
-          type: 'error',
-          text: data?.error || 'No historical telemetry found for this timestamp.',
-        });
+      if (isBackendConnected && inputs.timestamp) {
+        const data = await fetchDatasetValues(currentSite.campusKey, currentSite.siteKey, inputs.timestamp);
+        if (data && data.success && data.found) {
+          setInputs((prev) => ({
+            ...prev,
+            SolarGeneration: String(data.SolarGeneration || data.actual_generation || '8.8'),
+            AirTemperature: String(data.AirTemperature || '27.5'),
+            RelativeHumidity: String(data.RelativeHumidity || '50'),
+            WindSpeed: String(data.WindSpeed || '3.2'),
+          }));
+          setFormErrors({});
+          return;
+        }
       }
-    } catch (err) {
-      setAutoFillMessage({
-        type: 'error',
-        text: err.message || 'No historical records found for this time. Monitored records: 2020-01-01 to 2022-04-23.',
+      // Fallback clean example values
+      setInputs({
+        timestamp: '2021-06-15T13:30',
+        SolarGeneration: '8.8',
+        AirTemperature: '27.5',
+        RelativeHumidity: '50',
+        WindSpeed: '3.2',
       });
+      setFormErrors({});
+    } catch {
+      setInputs({
+        timestamp: '2021-06-15T13:30',
+        SolarGeneration: '8.8',
+        AirTemperature: '27.5',
+        RelativeHumidity: '50',
+        WindSpeed: '3.2',
+      });
+      setFormErrors({});
     } finally {
-      setIsAutoFilling(false);
+      setIsFetchingExample(false);
     }
   };
 
@@ -136,20 +83,20 @@ export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnecte
     const errors = {};
     const isInvalid = (val) => val === undefined || val === null || String(val).trim() === '' || isNaN(Number(val));
 
+    if (!inputs.timestamp || inputs.timestamp.trim() === '') {
+      errors.timestamp = 'Please choose a date and time.';
+    }
     if (isInvalid(inputs.SolarGeneration) || Number(inputs.SolarGeneration) < 0) {
-      errors.SolarGeneration = 'Enter current generation (>= 0 kW).';
+      errors.SolarGeneration = 'Please enter actual power (0 or higher).';
     }
     if (isInvalid(inputs.AirTemperature)) {
-      errors.AirTemperature = 'Enter air temperature (°C).';
+      errors.AirTemperature = 'Please enter the air temperature.';
     }
     if (isInvalid(inputs.RelativeHumidity) || Number(inputs.RelativeHumidity) < 0 || Number(inputs.RelativeHumidity) > 100) {
-      errors.RelativeHumidity = 'Enter humidity (0–100%).';
+      errors.RelativeHumidity = 'Humidity must be between 0 and 100.';
     }
     if (isInvalid(inputs.WindSpeed) || Number(inputs.WindSpeed) < 0) {
-      errors.WindSpeed = 'Enter wind speed (>= 0 m/s).';
-    }
-    if (!inputs.timestamp || inputs.timestamp.trim() === '') {
-      errors.timestamp = 'Please select a date and time.';
+      errors.WindSpeed = 'Wind speed must be 0 or higher.';
     }
 
     setFormErrors(errors);
@@ -160,15 +107,12 @@ export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnecte
     e.preventDefault();
     if (!validate()) return;
 
-    const site = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
-
-    // Submit ONLY current data. Backend automatically retrieves previous generation and lags.
     const payload = {
-      siteId: site.id,
-      CampusKey: site.campusKey,
-      SiteKey: site.siteKey,
-      kWp: parseFloat(site.capacity),
-      'Number of panels': parseInt(site.panels, 10),
+      siteId: currentSite.id,
+      CampusKey: currentSite.campusKey,
+      SiteKey: currentSite.siteKey,
+      kWp: parseFloat(currentSite.capacity),
+      'Number of panels': parseInt(currentSite.panels, 10),
       timestamp: inputs.timestamp,
       SolarGeneration: parseFloat(inputs.SolarGeneration),
       AirTemperature: parseFloat(inputs.AirTemperature),
@@ -179,50 +123,26 @@ export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnecte
     onAnalyze(payload);
   };
 
-  const currentSite = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
-
   return (
-    <div className="panel">
-      <div className="panel-header">
-        <h2 className="panel-title">Operational Data Input</h2>
-        <p className="panel-subtitle">
-          Enter only current observations. The system automatically retrieves historical lags and baseline telemetry.
-        </p>
-      </div>
+    <div className="form-panel">
+      <form onSubmit={handleSubmit} noValidate>
+        {/* Step 1: Choose site and time */}
+        <div style={{ marginBottom: '1.75rem' }}>
+          <h2 className="form-step-title">
+            <span>1</span> Choose site and time
+          </h2>
 
-      <form onSubmit={handleSubmit} className="form" noValidate>
-        {/* Preset Scenarios Selector */}
-        <div className="scenario-selector">
-          <label htmlFor="scenario-select" className="scenario-label">
-            Sample Scenario:
-          </label>
-          <select
-            id="scenario-select"
-            value={selectedScenario}
-            onChange={handleScenarioChange}
-            className="select-field"
-            disabled={isLoading}
-          >
-            {SCENARIOS.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* 1. Solar Site Selection */}
-        <div className="form-section">
-          <div className="form-section-title">1. Monitored Solar Array</div>
-          <div className="field-group">
-            <label htmlFor="site-select" className="field-label">
-              Select Solar Site
-            </label>
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="site-select" className="field-label">
+                Solar site
+              </label>
+            </div>
             <select
               id="site-select"
               value={selectedSiteId}
-              onChange={handleSiteChange}
-              className="select-field"
+              onChange={(e) => setSelectedSiteId(e.target.value)}
+              className="form-select"
               disabled={isLoading}
             >
               {SOLAR_SITES.map((site) => (
@@ -231,224 +151,219 @@ export default function SolarInputForm({ onAnalyze, isLoading, isBackendConnecte
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="site-info-badge" style={{
-            fontSize: '0.75rem',
-            padding: '0.4rem 0.65rem',
-            background: 'var(--bg-subtle)',
-            borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--border-color)',
-            color: 'var(--text-secondary)',
-            marginBottom: '0.75rem'
-          }}>
-            Capacity: <strong>{currentSite.capacity} kWp</strong> • Array: <strong>{currentSite.panels} panels</strong> • Campus {currentSite.campusKey}, Site {currentSite.siteKey}
-          </div>
-        </div>
-
-        {/* 2. Date & Time Selection with Auto-fill button */}
-        <div className="form-section">
-          <div className="form-section-title">2. Observation Timestamp</div>
-          <div className="field-group">
-            <label htmlFor="timestamp" className="field-label">
-              Date & Time (Local)
-            </label>
-            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <input
-                id="timestamp"
-                type="datetime-local"
-                className={`input-field ${formErrors.timestamp ? 'error' : ''}`}
-                value={inputs.timestamp}
-                onChange={(e) => handleInputChange('timestamp', e.target.value)}
-                disabled={isLoading}
-              />
-              <button
-                type="button"
-                onClick={handleUseDatasetValues}
-                disabled={isLoading || isAutoFilling || !isBackendConnected}
-                className="btn-secondary"
-                title="Auto-fill actual generation and weather from historical dataset"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  whiteSpace: 'nowrap',
-                  padding: '0.55rem 0.75rem',
-                  fontSize: '0.775rem',
-                  fontWeight: 600
-                }}
-              >
-                <Sparkles size={13} aria-hidden="true" />
-                <span>{isAutoFilling ? 'Fetching...' : 'Use dataset values'}</span>
-              </button>
+            <div className="site-meta-text">
+              {currentSite.capacity} kW capacity, {currentSite.panels} panels
             </div>
+          </div>
+
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="timestamp-input" className="field-label">
+                Date and time
+              </label>
+            </div>
+            <input
+              id="timestamp-input"
+              type="datetime-local"
+              value={inputs.timestamp}
+              onChange={(e) => handleInputChange('timestamp', e.target.value)}
+              className={`form-input ${formErrors.timestamp ? 'error' : ''}`}
+              disabled={isLoading}
+            />
             {formErrors.timestamp && (
-              <span className="field-error-text" role="alert">
-                {formErrors.timestamp}
-              </span>
+              <div className="field-error-msg">{formErrors.timestamp}</div>
             )}
-            <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-              Monitored operational history coverage: 2020-01-01 to 2022-04-23.
+            <div className="field-helper">
+              Records available from Jan 2020 to Apr 2022
             </div>
-
-            {autoFillMessage && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  marginTop: '0.4rem',
-                  fontSize: '0.75rem',
-                  color: autoFillMessage.type === 'success' ? 'var(--status-good-text)' : 'var(--status-danger-text)',
-                }}
-              >
-                {autoFillMessage.type === 'success' ? <CheckCircle2 size={13} /> : <AlertCircle size={13} />}
-                <span>{autoFillMessage.text}</span>
-              </div>
-            )}
           </div>
         </div>
 
-        {/* 3. Current Monitored Values (Typed inputs only) */}
-        <div className="form-section">
-          <div className="form-section-title">3. Current Monitored Parameters</div>
-          
-          {/* Actual Generation Now */}
-          <div className="field-group">
-            <label htmlFor="SolarGeneration" className="field-label">
-              Actual Generation Now (kW)
-            </label>
-            <div className="input-container">
+        {/* Step 2: Enter today's readings */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <h2 className="form-step-title">
+            <span>2</span> Enter today's readings
+          </h2>
+
+          {/* Quick fill button */}
+          <button
+            type="button"
+            onClick={handleFillExampleValues}
+            disabled={isLoading || isFetchingExample}
+            className="btn-fill-example"
+            title="Fill in standard example numbers for this site and time"
+          >
+            <span>{isFetchingExample ? 'Loading...' : 'Fill example values'}</span>
+          </button>
+
+          {/* Field 1: Actual power now */}
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="actual-power-input" className="field-label">
+                <span>Actual power now</span>
+                <span
+                  className="tooltip-trigger"
+                  title="The reading from your solar meter or inverter right now"
+                  tabIndex={0}
+                  aria-label="Help: The reading from your solar meter or inverter right now"
+                >
+                  ?
+                </span>
+              </label>
+            </div>
+            <div className="input-with-unit">
               <input
-                id="SolarGeneration"
+                id="actual-power-input"
                 type="text"
                 inputMode="decimal"
-                className={`input-field has-unit ${formErrors.SolarGeneration ? 'error' : ''}`}
                 value={inputs.SolarGeneration}
                 onChange={(e) => handleInputChange('SolarGeneration', e.target.value)}
                 placeholder="e.g. 8.8"
+                className={`form-input ${formErrors.SolarGeneration ? 'error' : ''}`}
                 disabled={isLoading}
               />
-              <span className="input-unit-label" aria-hidden="true">
-                kW
-              </span>
+              <span className="unit-tag">kW</span>
             </div>
             {formErrors.SolarGeneration && (
-              <span className="field-error-text" role="alert">
-                {formErrors.SolarGeneration}
-              </span>
+              <div className="field-error-msg">{formErrors.SolarGeneration}</div>
             )}
+            <div className="field-helper">The reading from your solar meter or inverter right now</div>
           </div>
 
-          {/* Weather Fields: Air Temperature, Humidity, Wind Speed */}
-          <div className="field-grid-3">
-            <div className="field-group">
-              <label htmlFor="AirTemperature" className="field-label">
-                Air Temp (°C)
+          {/* Field 2: Air temperature */}
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="air-temp-input" className="field-label">
+                <span>Air temperature</span>
+                <span
+                  className="tooltip-trigger"
+                  title="Outdoor temperature around the panels in degrees Celsius"
+                  tabIndex={0}
+                  aria-label="Help: Outdoor temperature around the panels in degrees Celsius"
+                >
+                  ?
+                </span>
               </label>
-              <div className="input-container">
-                <input
-                  id="AirTemperature"
-                  type="text"
-                  inputMode="decimal"
-                  className={`input-field has-unit ${formErrors.AirTemperature ? 'error' : ''}`}
-                  value={inputs.AirTemperature}
-                  onChange={(e) => handleInputChange('AirTemperature', e.target.value)}
-                  placeholder="27.5"
-                  disabled={isLoading}
-                />
-                <span className="input-unit-label" aria-hidden="true">
-                  °C
-                </span>
-              </div>
-              {formErrors.AirTemperature && (
-                <span className="field-error-text" role="alert">
-                  {formErrors.AirTemperature}
-                </span>
-              )}
             </div>
+            <div className="input-with-unit">
+              <input
+                id="air-temp-input"
+                type="text"
+                inputMode="decimal"
+                value={inputs.AirTemperature}
+                onChange={(e) => handleInputChange('AirTemperature', e.target.value)}
+                placeholder="e.g. 27.5"
+                className={`form-input ${formErrors.AirTemperature ? 'error' : ''}`}
+                disabled={isLoading}
+              />
+              <span className="unit-tag">°C</span>
+            </div>
+            {formErrors.AirTemperature && (
+              <div className="field-error-msg">{formErrors.AirTemperature}</div>
+            )}
+            <div className="field-helper">Outdoor temperature around the panels</div>
+          </div>
 
-            <div className="field-group">
-              <label htmlFor="RelativeHumidity" className="field-label">
-                Humidity (%)
+          {/* Field 3: Humidity */}
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="humidity-input" className="field-label">
+                <span>Humidity</span>
+                <span
+                  className="tooltip-trigger"
+                  title="Moisture percentage in the air between 0 and 100"
+                  tabIndex={0}
+                  aria-label="Help: Moisture percentage in the air between 0 and 100"
+                >
+                  ?
+                </span>
               </label>
-              <div className="input-container">
-                <input
-                  id="RelativeHumidity"
-                  type="text"
-                  inputMode="decimal"
-                  className={`input-field has-unit ${formErrors.RelativeHumidity ? 'error' : ''}`}
-                  value={inputs.RelativeHumidity}
-                  onChange={(e) => handleInputChange('RelativeHumidity', e.target.value)}
-                  placeholder="50"
-                  disabled={isLoading}
-                />
-                <span className="input-unit-label" aria-hidden="true">
-                  %
-                </span>
-              </div>
-              {formErrors.RelativeHumidity && (
-                <span className="field-error-text" role="alert">
-                  {formErrors.RelativeHumidity}
-                </span>
-              )}
             </div>
+            <div className="input-with-unit">
+              <input
+                id="humidity-input"
+                type="text"
+                inputMode="decimal"
+                value={inputs.RelativeHumidity}
+                onChange={(e) => handleInputChange('RelativeHumidity', e.target.value)}
+                placeholder="e.g. 50"
+                className={`form-input ${formErrors.RelativeHumidity ? 'error' : ''}`}
+                disabled={isLoading}
+              />
+              <span className="unit-tag">%</span>
+            </div>
+            {formErrors.RelativeHumidity && (
+              <div className="field-error-msg">{formErrors.RelativeHumidity}</div>
+            )}
+            <div className="field-helper">Moisture in the air (0 to 100)</div>
+          </div>
 
-            <div className="field-group">
-              <label htmlFor="WindSpeed" className="field-label">
-                Wind (m/s)
+          {/* Field 4: Wind speed */}
+          <div className="form-group">
+            <div className="field-label-row">
+              <label htmlFor="wind-input" className="field-label">
+                <span>Wind speed</span>
+                <span
+                  className="tooltip-trigger"
+                  title="Wind speed at your site in meters per second"
+                  tabIndex={0}
+                  aria-label="Help: Wind speed at your site in meters per second"
+                >
+                  ?
+                </span>
               </label>
-              <div className="input-container">
-                <input
-                  id="WindSpeed"
-                  type="text"
-                  inputMode="decimal"
-                  className={`input-field has-unit ${formErrors.WindSpeed ? 'error' : ''}`}
-                  value={inputs.WindSpeed}
-                  onChange={(e) => handleInputChange('WindSpeed', e.target.value)}
-                  placeholder="3.2"
-                  disabled={isLoading}
-                />
-                <span className="input-unit-label" aria-hidden="true">
-                  m/s
-                </span>
-              </div>
-              {formErrors.WindSpeed && (
-                <span className="field-error-text" role="alert">
-                  {formErrors.WindSpeed}
-                </span>
-              )}
             </div>
+            <div className="input-with-unit">
+              <input
+                id="wind-input"
+                type="text"
+                inputMode="decimal"
+                value={inputs.WindSpeed}
+                onChange={(e) => handleInputChange('WindSpeed', e.target.value)}
+                placeholder="e.g. 3.2"
+                className={`form-input ${formErrors.WindSpeed ? 'error' : ''}`}
+                disabled={isLoading}
+              />
+              <span className="unit-tag">m/s</span>
+            </div>
+            {formErrors.WindSpeed && (
+              <div className="field-error-msg">{formErrors.WindSpeed}</div>
+            )}
+            <div className="field-helper">Wind speed at your site</div>
           </div>
         </div>
 
-        {/* Automatic History Retrieval Notice */}
-        <div style={{
-          padding: '0.65rem 0.75rem',
-          background: 'rgba(56, 189, 248, 0.08)',
-          border: '1px solid rgba(56, 189, 248, 0.2)',
-          borderRadius: 'var(--radius-sm)',
-          fontSize: '0.75rem',
-          color: 'var(--text-secondary)',
-          display: 'flex',
-          gap: '0.5rem',
-          alignItems: 'center',
-          marginBottom: '1rem'
-        }}>
-          <Database size={15} style={{ color: 'var(--brand-primary)', flexShrink: 0 }} />
-          <span>
-            <strong>Automatic History Lookup:</strong> Preceding generation (15m prior) and lags (30m, 1h, 2h) are retrieved automatically from the operational database.
-          </span>
-        </div>
-
-        {/* Submit Button */}
+        {/* Large Primary Action Button */}
         <button
           type="submit"
-          className="submit-button"
+          className="btn-primary-check"
           disabled={isLoading || !isBackendConnected}
         >
-          {isLoading ? 'Running Inference...' : 'Analyze Solar Performance'}
+          {isLoading ? (
+            <>
+              <span className="spinner" style={{ width: 18, height: 18, borderWidth: 2 }} />
+              <span>Checking...</span>
+            </>
+          ) : (
+            <span>Check my solar panels</span>
+          )}
         </button>
+
+        {/* Beginner Glossary Line */}
+        <div className="form-glossary-note">
+          kW = power right now • kWh = energy over time
+        </div>
+
+        {/* Secondary CSV Upload Link */}
+        <div className="batch-link-container">
+          <button
+            type="button"
+            onClick={onOpenBatchModal}
+            className="btn-secondary-link"
+          >
+            Have many readings? Upload a CSV
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,20 +1,14 @@
 import React from 'react';
-import SystemStatus from './SystemStatus';
 
-export default function Header({ isConnected, isChecking, onRetry }) {
+export default function Header({ isConnected }) {
   return (
-    <header className="header">
-      <div className="header-inner">
-        <div>
-          <h1 className="brand-title">Solar AI Monitoring System</h1>
-          <p className="brand-subtitle">Solar performance and maintenance analysis</p>
+    <header className="app-header">
+      <div className="header-content">
+        <h1 className="app-title">Solar Panel Monitor</h1>
+        <div className="status-dot-wrapper" aria-label={`System status: ${isConnected ? 'Connected' : 'Offline'}`}>
+          <span className={`status-dot ${isConnected ? 'connected' : 'offline'}`} />
+          <span>{isConnected ? 'Connected' : 'Offline'}</span>
         </div>
-
-        <SystemStatus
-          isConnected={isConnected}
-          isChecking={isChecking}
-          onRetry={onRetry}
-        />
       </div>
     </header>
   );

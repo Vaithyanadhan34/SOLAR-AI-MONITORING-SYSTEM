@@ -1,264 +1,188 @@
 import React, { useState, useEffect } from 'react';
 import { checkBackend, analyzeSolarData } from '../services/api';
 import Header from '../components/Header';
-import ProjectOverview from '../components/ProjectOverview';
 import SolarInputForm from '../components/SolarInputForm';
-import BatchAnalysis from '../components/BatchAnalysis';
-import PredictionCards from '../components/PredictionCards';
-import AnomalyCard from '../components/AnomalyCard';
-import MaintenanceCard from '../components/MaintenanceCard';
+import ResultPanel from '../components/ResultPanel';
 import PerformanceChart from '../components/PerformanceChart';
-import CleaningCostBenefit from '../components/CleaningCostBenefit';
-import EnvironmentalBenefits from '../components/EnvironmentalBenefits';
-import { AlertCircle, RefreshCw, Layers, UploadCloud } from 'lucide-react';
+import BatchAnalysis from '../components/BatchAnalysis';
 
 export default function Dashboard() {
   const [isBackendConnected, setIsBackendConnected] = useState(false);
-  const [isCheckingBackend, setIsCheckingBackend] = useState(false);
-  const [activeMode, setActiveMode] = useState('single'); // 'single' | 'batch'
   const [analysisResult, setAnalysisResult] = useState(null);
   const [batchData, setBatchData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isBatchModalOpen, setIsBatchModalOpen] = useState(false);
 
   const verifyBackend = async () => {
-    setIsCheckingBackend(true);
     try {
       const status = await checkBackend();
-      setIsBackendConnected(status.connected);
-      if (!status.connected) {
-        setErrorMessage('Backend inference API is unreachable. Ensure the Flask server is running at http://127.0.0.1:5000.');
-      } else {
-        setErrorMessage(null);
-      }
-    } catch (err) {
+      setIsBackendConnected(Boolean(status?.connected));
+    } catch {
       setIsBackendConnected(false);
-      setErrorMessage('Backend inference API is unreachable. Ensure the Flask server is running at http://127.0.0.1:5000.');
-    } finally {
-      setIsCheckingBackend(false);
     }
   };
 
   useEffect(() => {
     verifyBackend();
-    const interval = setInterval(verifyBackend, 30000);
+    const interval = setInterval(verifyBackend, 20000);
     return () => clearInterval(interval);
   }, []);
 
   const handleAnalyze = async (formData) => {
     setIsLoading(true);
     setErrorMessage(null);
-    setBatchData(null);
     try {
       const result = await analyzeSolarData(formData);
       if (result && result.success) {
-        setAnalysisResult({ ...result });
+        setAnalysisResult(result);
       } else {
-        setErrorMessage(result?.error || 'Unable to complete the analysis. Please check entered parameters.');
+        setErrorMessage(result?.error || 'Unable to check your panels. Please verify your readings.');
       }
     } catch (err) {
-      console.error('Analysis execution error:', err);
       setErrorMessage(
         !isBackendConnected
-          ? 'Backend service is offline. Start Flask server (py app.py) to run model inference.'
-          : (err.message || 'Unable to complete analysis. Verify that date falls within the 2020-01-01 to 2022-04-23 monitored period.')
+          ? 'Backend service is offline. Start the backend: py app.py in your terminal.'
+          : (err.message || 'Unable to complete analysis. Please ensure the selected time falls within the 2020-2022 dataset range.')
       );
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleBatchComplete = (batch) => {
-    setBatchData(batch);
-    setErrorMessage(null);
-  };
-
   return (
-    <div className="app-container">
-      {/* Top Application Header with Connection Status */}
-      <Header
-        isConnected={isBackendConnected}
-        isChecking={isCheckingBackend}
-        onRetry={verifyBackend}
-      />
+    <div className="page-wrapper">
+      {/* 1. Header: app name and small connected/offline dot only */}
+      <Header isConnected={isBackendConnected} />
 
-      <main className="main-content">
-        {/* Offline / Error Alert Bar */}
-        {errorMessage && (
-          <div className="notice-bar error" role="alert" style={{ marginBottom: '1.25rem' }}>
-            <AlertCircle size={16} aria-hidden="true" style={{ flexShrink: 0 }} />
-            <span className="notice-text">{errorMessage}</span>
-            <button
-              onClick={verifyBackend}
-              className="retry-btn"
-              disabled={isCheckingBackend}
-              aria-label="Retry connection"
-            >
-              <RefreshCw size={13} className={isCheckingBackend ? 'spin' : ''} aria-hidden="true" />
-              <span>Retry</span>
-            </button>
+      <main className="page-container">
+        {/* 2. One-sentence intro */}
+        <section className="intro-section">
+          <p className="intro-text">
+            Check if your solar panels are producing what they should, and find out whether they need cleaning or inspection.
+          </p>
+        </section>
+
+        {/* 3. 3-step flow shown as numbers (guide, not a wizard) */}
+        <section className="steps-guide" aria-label="System workflow guide">
+          <div className="step-item">
+            <span className="step-number">1</span>
+            <span>Choose site and time</span>
           </div>
-        )}
+          <div className="step-item">
+            <span className="step-number">2</span>
+            <span>Enter today's readings</span>
+          </div>
+          <div className="step-item">
+            <span className="step-number">3</span>
+            <span>See result</span>
+          </div>
+        </section>
 
-        {/* Section A: Project Problem Statement & Scope Overview */}
-        <ProjectOverview />
-
-        {/* Mode Selector Tabs (Requirement 6: Two Modes) */}
-        <div style={{
-          display: 'flex',
-          gap: '0.5rem',
-          margin: '1.25rem 0 1rem',
-          borderBottom: '1px solid var(--border-color)',
-          paddingBottom: '0.5rem'
-        }}>
-          <button
-            type="button"
-            onClick={() => setActiveMode('single')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              borderRadius: 'var(--radius-sm)',
-              border: 'none',
-              cursor: 'pointer',
-              background: activeMode === 'single' ? 'var(--brand-primary)' : 'transparent',
-              color: activeMode === 'single' ? '#ffffff' : 'var(--text-secondary)',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            <Layers size={15} />
-            <span>Mode 1: Single Observation</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveMode('batch')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              borderRadius: 'var(--radius-sm)',
-              border: 'none',
-              cursor: 'pointer',
-              background: activeMode === 'batch' ? 'var(--brand-primary)' : 'transparent',
-              color: activeMode === 'batch' ? '#ffffff' : 'var(--text-secondary)',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            <UploadCloud size={15} />
-            <span>Mode 2: Batch CSV Upload</span>
-          </button>
-        </div>
-
-        {/* 2-Column Operational Intelligence Workspace */}
-        <div className="dashboard-grid">
-          {/* Input Column: Mode 1 (Single) or Mode 2 (Batch) */}
-          <div className="input-column">
-            {activeMode === 'single' ? (
-              <SolarInputForm
-                onAnalyze={handleAnalyze}
-                isLoading={isLoading}
-                isBackendConnected={isBackendConnected}
-              />
-            ) : (
-              <BatchAnalysis
-                onBatchResult={handleBatchComplete}
-                isBackendConnected={isBackendConnected}
-              />
-            )}
+        {/* 4. Two columns on desktop: Form on left, Result on right. Stacks on mobile */}
+        <div className="workspace-grid">
+          <div className="form-column">
+            <SolarInputForm
+              onAnalyze={handleAnalyze}
+              isLoading={isLoading}
+              isBackendConnected={isBackendConnected}
+              onOpenBatchModal={() => setIsBatchModalOpen(true)}
+            />
           </div>
 
-          {/* Results Column */}
-          <div className="results-column">
-            {activeMode === 'batch' && batchData ? (
-              <div className="results-container">
-                {/* Performance Chart with Batch Timeline Curve */}
-                <PerformanceChart timeline={batchData.timeline} />
+          <div className="result-column">
+            <ResultPanel
+              result={analysisResult}
+              isLoading={isLoading}
+              errorMessage={errorMessage}
+            />
 
-                {/* Batch Cost-Benefit Summary */}
-                <CleaningCostBenefit
-                  lossPercent={15.0}
-                  lostKwh={batchData.metrics?.total_lost_kwh}
-                  capacityKwp={25.0}
-                />
-              </div>
-            ) : analysisResult ? (
-              <div className="results-container">
-                {/* Section C: Generation Prediction Cards */}
-                <PredictionCards
-                  prediction={analysisResult.prediction}
-                  performance={analysisResult.performance}
-                  maintenance={analysisResult.maintenance}
-                  previousDataUsed={analysisResult.previous_data_used}
-                  predictionInterval={analysisResult.prediction_interval}
-                  lostKwh={analysisResult.lost_kwh}
-                  lostCo2Kg={analysisResult.lost_co2_kg}
-                  co2Label={analysisResult.co2_label}
-                  expectedGen={analysisResult.expected_generation}
-                />
-
-                {/* Section F: Actual vs Expected Comparison Chart */}
-                <PerformanceChart prediction={analysisResult.prediction} />
-
-                {/* Interactive Cleaning Cost-Benefit Analysis */}
-                <CleaningCostBenefit
-                  lossPercent={analysisResult.performance?.loss_percent}
-                  lostKwh={analysisResult.lost_kwh}
-                  capacityKwp={analysisResult.metadata?.installed_capacity_kwp}
-                />
-
-                {/* Section E: Condition-Based Maintenance Action */}
-                <MaintenanceCard maintenance={analysisResult.maintenance} />
-
-                {/* Section D: Behavioral Anomaly Detection & Explainability */}
-                <AnomalyCard
-                  anomaly={analysisResult.anomaly}
-                  explainability={analysisResult.explainability}
-                  driftWarnings={analysisResult.drift_warnings}
-                />
-              </div>
-            ) : (
-              <div className="empty-overview">
-                <div className="empty-title">Solar Performance & Health Monitor</div>
-                <p className="empty-text">
-                  This platform applies machine learning to monitor solar PV operations:
-                </p>
-                <ul className="empty-checklist">
-                  <li><strong>History Lookup:</strong> Automatically retrieves preceding operational data (15m, 30m, 1h, 2h lags) from the indexed database.</li>
-                  <li><strong>Physical Baseline:</strong> Compares measured output against an unsoiled expected generation model to prevent circular soiling masking.</li>
-                  <li><strong>Random Forest:</strong> Estimates short-term nowcast generation with tree spread prediction range.</li>
-                  <li><strong>Isolation Forest:</strong> Flags unusual operational dynamics and statistical inverter/string anomalies.</li>
-                  <li><strong>Decision Layer:</strong> Recommends condition-based actions: Normal, Cleaning Review, or Physical Inspection.</li>
-                </ul>
-                <div className="empty-hint">
-                  {activeMode === 'single'
-                    ? 'To evaluate an operating state, choose a site and timestamp on the left, then click Analyze Solar Performance.'
-                    : 'To evaluate multi-interval operational trends, upload a CSV file on the left and click Run Batch Analysis.'}
-                </div>
-              </div>
-            )}
+            {/* Actual vs Expected line chart below the result, only when real data exists (batch upload), otherwise simple empty state */}
+            <PerformanceChart timeline={batchData?.timeline} />
           </div>
         </div>
 
-        {/* Section G: Environmental & Resource Conservation Benefits */}
-        <div className="environmental-wrapper">
-          <EnvironmentalBenefits />
-        </div>
+        {/* 5. "How it works" (collapsed) and "Environmental benefits" (short, 4 lines) at the bottom */}
+        <section style={{ marginTop: '2.5rem' }}>
+          {/* Collapsed How it works */}
+          <details className="how-it-works-panel">
+            <summary className="how-it-works-summary">How it works</summary>
+            <div className="how-it-works-body">
+              <p style={{ marginBottom: '0.75rem' }}>
+                This system checks whether your solar panels are operating at peak health by comparing what they are actually generating with what they are expected to generate under current weather conditions:
+              </p>
+              <ul style={{ paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <li>
+                  <strong>Baseline calculation:</strong> Using sunlight, air temperature, humidity, and panel capacity, the system calculates the power clean panels should produce.
+                </li>
+                <li>
+                  <strong>Gradual loss detection:</strong> If actual generation steadily falls 15% or more below the expected level over time while weather is stable, it flags a cleaning review for possible dust or dirt.
+                </li>
+                <li>
+                  <strong>Sudden drop detection:</strong> If power drops sharply without a corresponding weather shift, the system alerts you to request a technician inspection for inverter, cabling, or equipment issues.
+                </li>
+                <li>
+                  <strong>Automated history lookup:</strong> When you pick a site and timestamp, the system retrieves previous readings automatically so you never have to calculate changes manually.
+                </li>
+              </ul>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                Powered by machine learning models trained on 2+ years of verified campus solar telemetry data (2020–2022).
+              </p>
+            </div>
+          </details>
+
+          {/* Environmental benefits: short, 4 lines */}
+          <div className="env-benefits-panel">
+            <h2 className="env-heading">Environmental benefits</h2>
+            <ul className="env-lines-list">
+              <li>
+                <strong>Water conservation:</strong> Clean panels only when performance loss confirms dirt buildup, saving water in dry regions.
+              </li>
+              <li>
+                <strong>Maximum clean electricity:</strong> Keeping panels operating at peak output maximizes renewable energy displacing fossil fuels.
+              </li>
+              <li>
+                <strong>Fewer wasted maintenance trips:</strong> Targeted alerts avoid unnecessary routine site visits and truck rolls.
+              </li>
+              <li>
+                <strong>Longer panel life:</strong> Spotting electrical faults, hotspots, and inverter issues early protects solar assets from permanent damage.
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
 
-      {/* Clean, Professional Footer */}
-      <footer className="footer">
-        <div className="footer-inner">
-          <p>Solar AI Monitoring System — AI-Powered PV Generation Forecasting & Condition-Based Maintenance.</p>
-          <p className="footer-sub">Software-only monitoring platform using Random Forest Regressor & Isolation Forest.</p>
+      {/* Secondary Batch CSV Upload Modal */}
+      {isBatchModalOpen && (
+        <div
+          className="modal-overlay"
+          onClick={() => setIsBatchModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="batch-modal-title"
+        >
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 id="batch-modal-title" className="modal-title">Upload readings CSV</h2>
+              <button
+                type="button"
+                className="modal-close-btn"
+                onClick={() => setIsBatchModalOpen(false)}
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+            </div>
+            <BatchAnalysis
+              onBatchResult={(batch) => {
+                setBatchData(batch);
+              }}
+              isBackendConnected={isBackendConnected}
+              onClose={() => setIsBatchModalOpen(false)}
+            />
+          </div>
         </div>
-      </footer>
+      )}
     </div>
   );
 }
