@@ -20,6 +20,9 @@ dist/
 *.pkl
 backend/models/*.csv
 backend/models/*.pkl
+!backend/models/sample_history.csv
+!sample_history.csv
+
 
 # OS files
 Thumbs.db

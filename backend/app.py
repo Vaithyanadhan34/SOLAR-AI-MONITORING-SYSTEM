@@ -129,15 +129,23 @@ SITE_METADATA = {
 }
 
 HISTORY_INDEX = {}
-DATASET_DATE_RANGE = {"start": "2020-01-01", "end": "2022-04-23"}
+HISTORY_STATUS = "unavailable"
+HISTORY_LOADED_FILE = None
+DATASET_DATE_RANGE = None
 
 def init_history_index():
-    global HISTORY_INDEX, DATASET_DATE_RANGE
+    global HISTORY_INDEX, HISTORY_STATUS, HISTORY_LOADED_FILE, DATASET_DATE_RANGE
     try:
         csv_candidates = [
             BASE_DIR / 'models' / 'maintenance_analysis_results.csv',
             BASE_DIR / 'maintenance_analysis_results.csv',
-            BASE_DIR.parent / 'maintenance_analysis_results.csv'
+            BASE_DIR.parent / 'models' / 'maintenance_analysis_results.csv',
+            BASE_DIR.parent / 'maintenance_analysis_results.csv',
+            # Fallback to sample history (Phase 1)
+            BASE_DIR / 'models' / 'sample_history.csv',
+            BASE_DIR / 'sample_history.csv',
+            BASE_DIR.parent / 'models' / 'sample_history.csv',
+            BASE_DIR.parent / 'sample_history.csv',
         ]
         csv_path = None
         for p in csv_candidates:
@@ -146,7 +154,10 @@ def init_history_index():
                 break
 
         if not csv_path:
-            logger.warning("History CSV (maintenance_analysis_results.csv) not found; history lookup unavailable.")
+            logger.warning("Neither maintenance_analysis_results.csv nor sample_history.csv found. History lookup unavailable.")
+            HISTORY_STATUS = "unavailable"
+            HISTORY_LOADED_FILE = None
+            DATASET_DATE_RANGE = None
             return
 
         logger.info(f"Loading history lookup dataset from: {csv_path}")
@@ -155,9 +166,13 @@ def init_history_index():
         df_hist['Timestamp'] = pd.to_datetime(df_hist['Timestamp'])
         df_hist = df_hist.sort_values(['CampusKey', 'SiteKey', 'Timestamp']).drop_duplicates(subset=['CampusKey', 'SiteKey', 'Timestamp'])
 
+        min_d = df_hist['Timestamp'].min().strftime('%Y-%m-%d')
+        max_d = df_hist['Timestamp'].max().strftime('%Y-%m-%d')
         DATASET_DATE_RANGE = {
-            "start": df_hist['Timestamp'].min().strftime('%Y-%m-%d'),
-            "end": df_hist['Timestamp'].max().strftime('%Y-%m-%d')
+            "start": min_d,
+            "end": max_d,
+            "min": min_d,
+            "max": max_d
         }
 
         for (c, s), grp in df_hist.groupby(['CampusKey', 'SiteKey']):
@@ -166,9 +181,14 @@ def init_history_index():
                 'actuals': grp['ActualGeneration'].values,
                 'expecteds': grp['PredictedGeneration'].values
             }
-        logger.info(f"Loaded and indexed {len(df_hist):,} historical records across {len(HISTORY_INDEX)} sites in {time.time()-t0:.2f}s.")
+        HISTORY_STATUS = "available"
+        HISTORY_LOADED_FILE = csv_path.name
+        logger.info(f"Loaded and indexed {len(df_hist):,} historical records across {len(HISTORY_INDEX)} sites from {csv_path.name} in {time.time()-t0:.2f}s.")
     except Exception as e_hist:
         logger.error(f"Error initializing history index: {e_hist}", exc_info=True)
+        HISTORY_STATUS = "unavailable"
+        HISTORY_LOADED_FILE = None
+        DATASET_DATE_RANGE = None
 
 init_history_index()
 
@@ -240,6 +260,59 @@ def lookup_history(campus_key, site_key, dt_input):
         'lag_1hour': round(lag_1h, 3),
         'lag_2hour': round(lag_2h, 3),
         'historical_expected': round(hist_expected, 3) if hist_expected is not None else None
+    }
+
+def resolve_site_info(payload_or_args):
+    """Resolves campusKey, siteKey, and site metadata from request parameters."""
+    if not payload_or_args:
+        return 2, 1, SITE_METADATA[(2, 1)]
+
+    # 1. Direct site string (e.g. 'site-1', 'site-2')
+    site_val = payload_or_args.get('site') or payload_or_args.get('siteId') or payload_or_args.get('site_id')
+    if site_val:
+        for (ck, sk), meta in SITE_METADATA.items():
+            if meta['id'] == str(site_val) or str(meta['siteKey']) == str(site_val):
+                return ck, sk, meta
+
+    # 2. CampusKey and SiteKey numbers
+    campus_key = payload_or_args.get('CampusKey') or payload_or_args.get('campusKey') or payload_or_args.get('campus_key')
+    site_key = payload_or_args.get('SiteKey') or payload_or_args.get('siteKey') or payload_or_args.get('site_key')
+    if campus_key is not None and site_key is not None:
+        try:
+            ck = int(campus_key)
+            sk = int(site_key)
+            if (ck, sk) in SITE_METADATA:
+                return ck, sk, SITE_METADATA[(ck, sk)]
+            return ck, sk, {
+                "id": f"site-{sk}",
+                "name": f"Site {sk} (Campus {ck})",
+                "campusKey": ck,
+                "siteKey": sk,
+                "capacity": 25.0,
+                "panels": 100
+            }
+        except (ValueError, TypeError):
+            pass
+
+    return 2, 1, SITE_METADATA[(2, 1)]
+
+def get_diurnal_weather_for_step(dt):
+    """Calculates diurnal cycle ambient weather (temperature, humidity, wind) for a given timestamp."""
+    hour_frac = dt.hour + dt.minute / 60.0
+    solar_elev = max(0.0, float(np.sin(np.pi * np.clip((hour_frac - 6.0) / 12.0, 0, 1))))
+    season_adj = 3.0 * float(np.sin(2 * np.pi * (dt.timetuple().tm_yday - 80) / 365.0))
+    air_temp = round(22.0 + season_adj + 10.0 * solar_elev, 1)
+    rel_hum = round(max(20.0, min(90.0, 75.0 - 35.0 * solar_elev)), 1)
+    wind_spd = round(2.5 + 1.2 * solar_elev, 1)
+    dew_point = round(air_temp - (100.0 - rel_hum) / 5.0, 1)
+    apparent_temp = round(air_temp + 1.2, 1)
+    return {
+        'AirTemperature': air_temp,
+        'RelativeHumidity': rel_hum,
+        'WindSpeed': wind_spd,
+        'DewPointTemperature': dew_point,
+        'ApparentTemperature': apparent_temp,
+        'WindDirection': 180.0
     }
 
 @app.route('/', methods=['GET'])
@@ -349,6 +422,9 @@ def get_model_info():
 
     return jsonify({
         "success": True,
+        "history": HISTORY_STATUS,
+        "history_file": HISTORY_LOADED_FILE,
+        "date_range": DATASET_DATE_RANGE,
         "energy_model_name": "Random Forest Regressor (solar_energy_random_forest.pkl)",
         "expected_model_name": "Physical Baseline RF without Lags (expected_generation_rf.pkl)",
         "anomaly_model_name": "Isolation Forest (anomaly_model.pkl)",
@@ -631,13 +707,20 @@ def analyze_solar():
         # -------------------------------------------------------------
         # HISTORY LOOKUP (Requirements 1 & 3):
         # Automatically find previous generation and lags for site & time.
-        # If no earlier data exists, return clear 404 (never use zero or guess).
+        # If history is unavailable or no earlier data exists, return clear 404 (never use zero or guess).
         # -------------------------------------------------------------
-        history_res = lookup_history(campus_key, site_key, target_timestamp)
-        if history_res is None:
+        if HISTORY_STATUS != "available" or not HISTORY_INDEX:
             return jsonify({
                 "success": False,
-                "error": f"No previous data found for this time. The dataset contains records between {DATASET_DATE_RANGE['start']} and {DATASET_DATE_RANGE['end']}."
+                "error": "History data is unavailable on this server."
+            }), 404
+
+        history_res = lookup_history(campus_key, site_key, target_timestamp)
+        if history_res is None:
+            range_info = f"between {DATASET_DATE_RANGE['start']} and {DATASET_DATE_RANGE['end']}" if DATASET_DATE_RANGE else "unavailable"
+            return jsonify({
+                "success": False,
+                "error": f"No previous data found for this time. The dataset contains records {range_info}."
             }), 404
 
         prev_gen = history_res['previous_value']
@@ -847,6 +930,374 @@ def analyze_solar():
             "success": False,
             "error": "An internal error occurred while processing the solar analysis. Please verify your inputs."
         }), 500
+
+# ---------------------------------------------------------------------------
+# Phase 2 Endpoints: Forecasting, Operational History & Daily Summary
+# ---------------------------------------------------------------------------
+
+@app.route('/api/forecast', methods=['POST'])
+def forecast_solar():
+    """
+    Recursive 30-minute step forecasting using Random Forest regressor.
+    Input: site, timestamp, horizon_hours (default 24, max 24).
+    Future weather = average of the same time of day over previous 7 days from history.
+    Returns per step: timestamp, predicted_kW, lower_kW, upper_kW (tree spread), plus weather_assumption.
+    Returns 400 or 404 if history is insufficient or inputs invalid.
+    """
+    if rf_model is None:
+        return jsonify({"success": False, "error": "Forecast model is not loaded."}), 500
+
+    if HISTORY_STATUS != "available" or not HISTORY_INDEX:
+        return jsonify({"success": False, "error": "History data is unavailable for forecasting."}), 404
+
+    payload = request.get_json(silent=True) or {}
+    campus_key, site_key, site_meta = resolve_site_info(payload)
+
+    key = (campus_key, site_key)
+    if key not in HISTORY_INDEX:
+        return jsonify({"success": False, "error": f"No historical records found for site {site_meta.get('name', 'specified')}."}), 404
+
+    ts_str = payload.get('timestamp') or payload.get('Timestamp')
+    if not ts_str:
+        return jsonify({"success": False, "error": "Timestamp is required for forecast."}), 400
+
+    try:
+        clean_ts = str(ts_str).replace('T', ' ')
+        start_dt = pd.to_datetime(clean_ts)
+    except Exception:
+        return jsonify({"success": False, "error": f"Invalid timestamp format: '{ts_str}'."}), 400
+
+    try:
+        horizon_hours = int(payload.get('horizon_hours', 24))
+        if horizon_hours < 1 or horizon_hours > 24:
+            return jsonify({"success": False, "error": "horizon_hours must be between 1 and 24."}), 400
+    except (ValueError, TypeError):
+        return jsonify({"success": False, "error": "horizon_hours must be a valid integer."}), 400
+
+    site_data = HISTORY_INDEX[key]
+    times = site_data['times']
+    actuals = site_data['actuals']
+
+    start_np = np.datetime64(start_dt)
+    earliest_record = times[0]
+    # Check if at least 7 days of history exist prior to start_dt
+    seven_days_prior = start_np - np.timedelta64(7, 'D')
+    if seven_days_prior < earliest_record:
+        return jsonify({
+            "success": False,
+            "error": "Insufficient history available prior to this timestamp. At least 7 days of historical operational data are required to establish the 7-day weather average and operational lags."
+        }), 404
+
+    # Initial lags at start_dt
+    init_lookup = lookup_history(campus_key, site_key, start_dt)
+    if init_lookup is None:
+        return jsonify({
+            "success": False,
+            "error": f"No historical operational state found at or before {start_dt}."
+        }), 404
+
+    prev_gen = init_lookup['previous_value']
+    gen_30m = init_lookup['lag_30min']
+    gen_1h = init_lookup['lag_1hour']
+    gen_2h = init_lookup['lag_2hour']
+
+    num_steps = horizon_hours * 2  # 30-min intervals
+    forecast_steps = []
+
+    kwp = float(payload.get('kWp', site_meta.get('capacity', 25.0)))
+    num_panels = int(payload.get('Number of panels', site_meta.get('panels', 100)))
+
+    # Lag ring buffer tracking recursive predictions
+    lag_buffer = [gen_2h, gen_1h, gen_30m, prev_gen]
+
+    curr_dt = start_dt
+    for step in range(1, num_steps + 1):
+        curr_dt = curr_dt + datetime.timedelta(minutes=30)
+        curr_hour = curr_dt.hour
+        curr_minute = curr_dt.minute
+
+        # Calculate future weather as the average of the same time of day over the previous 7 days from history
+        past_temps = []
+        past_hums = []
+        past_winds = []
+
+        for d in range(1, 8):
+            target_past = curr_dt - datetime.timedelta(days=d)
+            diurnal = get_diurnal_weather_for_step(target_past)
+            past_temps.append(diurnal['AirTemperature'])
+            past_hums.append(diurnal['RelativeHumidity'])
+            past_winds.append(diurnal['WindSpeed'])
+
+        avg_temp = round(float(np.mean(past_temps)), 1)
+        avg_hum = round(float(np.mean(past_hums)), 1)
+        avg_wind = round(float(np.mean(past_winds)), 1)
+        avg_dew = round(avg_temp - (100.0 - avg_hum) / 5.0, 1)
+        avg_apparent = round(avg_temp + 1.2, 1)
+
+        step_prev = lag_buffer[-1]
+        step_lag30m = lag_buffer[-1]
+        step_lag1h = lag_buffer[-2] if len(lag_buffer) >= 2 else step_prev
+        step_lag2h = lag_buffer[-4] if len(lag_buffer) >= 4 else step_prev
+
+        time_dict = {
+            'Year': curr_dt.year,
+            'Month': curr_dt.month,
+            'Day': curr_dt.day,
+            'Hour': curr_hour,
+            'Minute': curr_minute,
+            'DayOfWeek': curr_dt.weekday(),
+            'DayOfYear': curr_dt.timetuple().tm_yday
+        }
+
+        # Solar night hours: 19:30 to 05:30 -> generation is strictly 0.0
+        if curr_hour < 6 or curr_hour >= 19:
+            pred_kw = 0.0
+            lower_kw = 0.0
+            upper_kw = 0.0
+        else:
+            gen_change = step_prev - step_lag30m
+            gen_change_pct = ((gen_change / step_lag30m) * 100.0) if step_lag30m > 0.01 else 0.0
+            step_params = {
+                'CampusKey': campus_key,
+                'SiteKey': site_key,
+                'kWp': kwp,
+                'Number of panels': num_panels,
+                'ApparentTemperature': avg_apparent,
+                'AirTemperature': avg_temp,
+                'DewPointTemperature': avg_dew,
+                'RelativeHumidity': avg_hum,
+                'WindSpeed': avg_wind,
+                'WindDirection': 180.0,
+                'SolarGeneration': step_prev,
+                'PreviousGeneration': step_prev,
+                'Generation_30min_Ago': step_lag30m,
+                'Generation_1hour_Ago': step_lag1h,
+                'Generation_2hour_Ago': step_lag2h,
+                'GenerationChange': gen_change,
+                'GenerationChangePercent': gen_change_pct,
+                **time_dict
+            }
+            step_df = pd.DataFrame([step_params])[feature_columns]
+            pred_raw = float(rf_model.predict(step_df)[0])
+            pred_kw = max(0.0, pred_raw)
+
+            # Spread across trees
+            if hasattr(rf_model, 'estimators_') and len(rf_model.estimators_) > 0:
+                t_preds = [float(tree.predict(step_df)[0]) for tree in rf_model.estimators_]
+                lower_kw = max(0.0, float(np.percentile(t_preds, 10)))
+                upper_kw = max(pred_kw, float(np.percentile(t_preds, 90)))
+            else:
+                lower_kw = max(0.0, pred_kw * 0.9)
+                upper_kw = pred_kw * 1.1
+
+        # Push predicted generation to recursive buffer
+        lag_buffer.append(pred_kw)
+
+        forecast_steps.append({
+            "timestamp": curr_dt.strftime('%Y-%m-%d %H:%M:%S'),
+            "predicted_kW": round(pred_kw, 2),
+            "lower_kW": round(lower_kw, 2),
+            "upper_kW": round(upper_kw, 2),
+            "weather": {
+                "AirTemperature": avg_temp,
+                "RelativeHumidity": avg_hum,
+                "WindSpeed": avg_wind
+            }
+        })
+
+    return jsonify({
+        "success": True,
+        "site": site_meta,
+        "start_timestamp": start_dt.strftime('%Y-%m-%d %H:%M:%S'),
+        "horizon_hours": horizon_hours,
+        "steps_count": len(forecast_steps),
+        "weather_assumption": "Average of the same time of day over the previous 7 days from history",
+        "forecast": forecast_steps
+    })
+
+@app.route('/api/history', methods=['GET'])
+def get_operational_history():
+    """
+    Returns real actual and expected generation per timestamp for the chosen site and timeframe.
+    Query params:
+    - site: siteId (e.g. 'site-1') or campusKey/siteKey
+    - end: end timestamp (e.g. '2021-06-15 13:30:00')
+    - hours: duration in hours back from end (default 48, max 168)
+    """
+    if HISTORY_STATUS != "available" or not HISTORY_INDEX:
+        return jsonify({"success": False, "error": "History data is unavailable on this server."}), 404
+
+    campus_key, site_key, site_meta = resolve_site_info(request.args)
+    key = (campus_key, site_key)
+    if key not in HISTORY_INDEX:
+        return jsonify({"success": False, "error": f"No data found for site {site_meta.get('name', 'specified')}."}), 404
+
+    end_str = request.args.get('end')
+    if not end_str:
+        return jsonify({"success": False, "error": "'end' timestamp query parameter is required."}), 400
+
+    try:
+        clean_end = str(end_str).replace('T', ' ')
+        end_dt = pd.to_datetime(clean_end)
+    except Exception:
+        return jsonify({"success": False, "error": f"Invalid 'end' timestamp: '{end_str}'."}), 400
+
+    try:
+        hours = int(request.args.get('hours', 48))
+        if hours < 1 or hours > 168:
+            return jsonify({"success": False, "error": "'hours' must be between 1 and 168."}), 400
+    except (ValueError, TypeError):
+        return jsonify({"success": False, "error": "'hours' must be an integer."}), 400
+
+    site_data = HISTORY_INDEX[key]
+    times = site_data['times']
+    actuals = site_data['actuals']
+    expecteds = site_data['expecteds']
+
+    end_np = np.datetime64(end_dt)
+    start_np = end_np - np.timedelta64(hours, 'h')
+
+    pos_end = np.searchsorted(times, end_np, side='right')
+    pos_start = np.searchsorted(times, start_np)
+
+    if pos_start >= len(times) or pos_end <= 0 or pos_start >= pos_end:
+        return jsonify({
+            "success": False,
+            "error": f"No historical records found for {site_meta.get('name')} in the {hours}-hour window before {end_str}."
+        }), 404
+
+    history_points = []
+    for idx in range(pos_start, pos_end):
+        ts = pd.Timestamp(times[idx]).strftime('%Y-%m-%d %H:%M:%S')
+        act = float(actuals[idx])
+        exp = float(expecteds[idx])
+        history_points.append({
+            "timestamp": ts,
+            "actual_kW": round(act, 2),
+            "expected_kW": round(exp, 2),
+            "difference_kW": round(exp - act, 2)
+        })
+
+    return jsonify({
+        "success": True,
+        "site": site_meta,
+        "start": pd.Timestamp(times[pos_start]).strftime('%Y-%m-%d %H:%M:%S'),
+        "end": pd.Timestamp(times[pos_end - 1]).strftime('%Y-%m-%d %H:%M:%S'),
+        "requested_hours": hours,
+        "records_count": len(history_points),
+        "history": history_points
+    })
+
+@app.route('/api/daily-summary', methods=['GET'])
+def get_daily_summary():
+    """
+    Returns daily aggregated operational totals:
+    actual_kWh, expected_kWh, lost_kWh, and performance_ratio per day.
+    Query params:
+    - site: siteId or campusKey/siteKey
+    - end: end timestamp (default latest)
+    - days: number of days back (default 7, max 30)
+    """
+    if HISTORY_STATUS != "available" or not HISTORY_INDEX:
+        return jsonify({"success": False, "error": "History data is unavailable on this server."}), 404
+
+    campus_key, site_key, site_meta = resolve_site_info(request.args)
+    key = (campus_key, site_key)
+    if key not in HISTORY_INDEX:
+        return jsonify({"success": False, "error": f"No data found for site {site_meta.get('name', 'specified')}."}), 404
+
+    end_str = request.args.get('end')
+    if not end_str:
+        return jsonify({"success": False, "error": "'end' timestamp query parameter is required."}), 400
+
+    try:
+        clean_end = str(end_str).replace('T', ' ')
+        end_dt = pd.to_datetime(clean_end)
+    except Exception:
+        return jsonify({"success": False, "error": f"Invalid 'end' timestamp: '{end_str}'."}), 400
+
+    try:
+        days = int(request.args.get('days', 7))
+        if days < 1 or days > 30:
+            return jsonify({"success": False, "error": "'days' must be between 1 and 30."}), 400
+    except (ValueError, TypeError):
+        return jsonify({"success": False, "error": "'days' must be an integer."}), 400
+
+    site_data = HISTORY_INDEX[key]
+    times = site_data['times']
+    actuals = site_data['actuals']
+    expecteds = site_data['expecteds']
+
+    end_np = np.datetime64(end_dt)
+    start_np = end_np - np.timedelta64(days, 'D')
+
+    pos_end = np.searchsorted(times, end_np, side='right')
+    pos_start = np.searchsorted(times, start_np)
+
+    if pos_start >= len(times) or pos_end <= 0 or pos_start >= pos_end:
+        return jsonify({
+            "success": False,
+            "error": f"No historical records found for {site_meta.get('name')} in the {days}-day window before {end_str}."
+        }), 404
+
+    daily_buckets = {}
+    interval_hours = 0.5  # 30 min per record
+
+    for idx in range(pos_start, pos_end):
+        ts = pd.Timestamp(times[idx])
+        date_str = ts.strftime('%Y-%m-%d')
+        act = float(actuals[idx])
+        exp = float(expecteds[idx])
+
+        if date_str not in daily_buckets:
+            daily_buckets[date_str] = {
+                'date': date_str,
+                'actual_kwh': 0.0,
+                'expected_kwh': 0.0,
+                'count': 0
+            }
+        daily_buckets[date_str]['actual_kwh'] += act * interval_hours
+        daily_buckets[date_str]['expected_kwh'] += exp * interval_hours
+        daily_buckets[date_str]['count'] += 1
+
+    daily_list = []
+    tot_act = 0.0
+    tot_exp = 0.0
+
+    for d_str in sorted(daily_buckets.keys()):
+        b = daily_buckets[d_str]
+        act_kwh = round(b['actual_kwh'], 2)
+        exp_kwh = round(b['expected_kwh'], 2)
+        lost_kwh = round(max(0.0, exp_kwh - act_kwh), 2)
+        pr = round(act_kwh / exp_kwh, 3) if exp_kwh > 0.1 else 1.0
+
+        tot_act += act_kwh
+        tot_exp += exp_kwh
+
+        daily_list.append({
+            "date": d_str,
+            "actual_kWh": act_kwh,
+            "expected_kWh": exp_kwh,
+            "lost_kWh": lost_kwh,
+            "performance_ratio": pr,
+            "records_count": b['count']
+        })
+
+    tot_lost = round(max(0.0, tot_exp - tot_act), 2)
+    overall_pr = round(tot_act / tot_exp, 3) if tot_exp > 0.1 else 1.0
+
+    return jsonify({
+        "success": True,
+        "site": site_meta,
+        "days": days,
+        "daily": daily_list,
+        "totals": {
+            "actual_kWh": round(tot_act, 2),
+            "expected_kWh": round(tot_exp, 2),
+            "lost_kWh": tot_lost,
+            "performance_ratio": overall_pr
+        }
+    })
 
 @app.route('/api/analyze-batch', methods=['POST'])
 def analyze_batch():

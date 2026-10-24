@@ -110,6 +110,49 @@ export const analyzeBatch = async (formData) => {
   }
 };
 
+/**
+ * Fetch 24-hour step forecast.
+ */
+export const fetchForecast = async (payload) => {
+  try {
+    const response = await apiClient.post('/api/forecast', payload);
+    return response.data;
+  } catch (error) {
+    const message = error.response?.data?.error || error.message || 'Forecast generation failed';
+    throw new Error(message);
+  }
+};
+
+/**
+ * Fetch operational history (actual vs expected over specified hours).
+ */
+export const fetchHistory = async (site, end, hours = 48) => {
+  try {
+    const response = await apiClient.get('/api/history', {
+      params: { site, end, hours },
+    });
+    return response.data;
+  } catch (error) {
+    const message = error.response?.data?.error || error.message || 'Failed to fetch historical readings';
+    throw new Error(message);
+  }
+};
+
+/**
+ * Fetch 7-day daily operational summary (actual_kWh, expected_kWh, lost_kWh, performance_ratio).
+ */
+export const fetchDailySummary = async (site, end, days = 7) => {
+  try {
+    const response = await apiClient.get('/api/daily-summary', {
+      params: { site, end, days },
+    });
+    return response.data;
+  } catch (error) {
+    const message = error.response?.data?.error || error.message || 'Failed to fetch daily summary';
+    throw new Error(message);
+  }
+};
+
 export default {
   checkBackend,
   fetchSites,
@@ -117,4 +160,8 @@ export default {
   getModelInfo,
   analyzeSolarData,
   analyzeBatch,
+  fetchForecast,
+  fetchHistory,
+  fetchDailySummary,
 };
+

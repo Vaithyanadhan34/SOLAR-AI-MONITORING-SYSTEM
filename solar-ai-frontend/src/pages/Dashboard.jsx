@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { checkBackend, analyzeSolarData } from '../services/api';
+import { checkBackend, analyzeSolarData, getModelInfo } from '../services/api';
 import Header from '../components/Header';
 import SolarInputForm from '../components/SolarInputForm';
 import ResultPanel from '../components/ResultPanel';
+import GraphsPanel from '../components/GraphsPanel';
 import PerformanceChart from '../components/PerformanceChart';
 import BatchAnalysis from '../components/BatchAnalysis';
+
+const DEFAULT_SITE = {
+  id: 'site-1',
+  name: 'Site 1 (Campus 2)',
+  campusKey: 2,
+  siteKey: 1,
+  capacity: '25.0',
+  panels: '100',
+};
 
 export default function Dashboard() {
   const [isBackendConnected, setIsBackendConnected] = useState(false);
@@ -14,10 +24,25 @@ export default function Dashboard() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isBatchModalOpen, setIsBatchModalOpen] = useState(false);
 
+  // Site and date range state
+  const [dateRange, setDateRange] = useState(null);
+  const [selectedSite, setSelectedSite] = useState(DEFAULT_SITE);
+  const [selectedTimestamp, setSelectedTimestamp] = useState('2020-06-15T13:30');
+
   const verifyBackend = async () => {
     try {
       const status = await checkBackend();
       setIsBackendConnected(Boolean(status?.connected));
+      if (status?.connected) {
+        try {
+          const info = await getModelInfo();
+          if (info && info.date_range) {
+            setDateRange(info.date_range);
+          }
+        } catch {
+          // model-info optional
+        }
+      }
     } catch {
       setIsBackendConnected(false);
     }
@@ -29,6 +54,11 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleSiteOrDateChange = (siteObj, ts) => {
+    if (siteObj) setSelectedSite(siteObj);
+    if (ts) setSelectedTimestamp(ts);
+  };
+
   const handleAnalyze = async (formData) => {
     setIsLoading(true);
     setErrorMessage(null);
@@ -36,6 +66,9 @@ export default function Dashboard() {
       const result = await analyzeSolarData(formData);
       if (result && result.success) {
         setAnalysisResult(result);
+        if (formData.timestamp) {
+          setSelectedTimestamp(formData.timestamp);
+        }
       } else {
         setErrorMessage(result?.error || 'Unable to check your panels. Please verify your readings.');
       }
@@ -87,18 +120,31 @@ export default function Dashboard() {
               isLoading={isLoading}
               isBackendConnected={isBackendConnected}
               onOpenBatchModal={() => setIsBatchModalOpen(true)}
+              dateRange={dateRange}
+              onSiteOrDateChange={handleSiteOrDateChange}
             />
           </div>
 
           <div className="result-column">
+            {/* Primary Result Panel */}
             <ResultPanel
               result={analysisResult}
               isLoading={isLoading}
               errorMessage={errorMessage}
             />
 
-            {/* Actual vs Expected line chart below the result, only when real data exists (batch upload), otherwise simple empty state */}
-            <PerformanceChart timeline={batchData?.timeline} />
+            {/* Phase 4 Graphs: Switcher with three tabs (Past, Forecast, Compare) */}
+            <GraphsPanel
+              selectedSite={selectedSite}
+              timestamp={selectedTimestamp}
+              analysisResult={analysisResult}
+              isBackendConnected={isBackendConnected}
+            />
+
+            {/* Optional batch upload timeline chart when batch data is submitted */}
+            {batchData?.timeline && (
+              <PerformanceChart timeline={batchData.timeline} />
+            )}
           </div>
         </div>
 
@@ -113,7 +159,7 @@ export default function Dashboard() {
               </p>
               <ul style={{ paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <li>
-                  <strong>Baseline calculation:</strong> Using sunlight, air temperature, humidity, and panel capacity, the system calculates the power clean panels should produce.
+                  <strong>Baseline calculation:</strong> Using sunlight, air temperature, humidity, and panel capacity, the system calculates the power clean panels should produce without relying on previous dirty readings.
                 </li>
                 <li>
                   <strong>Gradual loss detection:</strong> If actual generation steadily falls 15% or more below the expected level over time while weather is stable, it flags a cleaning review for possible dust or dirt.
@@ -123,6 +169,9 @@ export default function Dashboard() {
                 </li>
                 <li>
                   <strong>Automated history lookup:</strong> When you pick a site and timestamp, the system retrieves previous readings automatically so you never have to calculate changes manually.
+                </li>
+                <li>
+                  <strong>Recursive forecasting:</strong> Projects expected future generation up to 24 hours ahead using historical weather averages for the same hour and day.
                 </li>
               </ul>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>

@@ -760,3 +760,53 @@ body {
   cursor: pointer;
   line-height: 1;
 }
+
+/* Graph Switcher Tabs & Captions (Phase 4) */
+.graph-tab-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.graph-tab-btn:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.graph-tab-btn.active {
+  background: var(--amber-600);
+  border-color: var(--amber-600);
+  color: #ffffff;
+}
+
+.graph-empty-box {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.chart-caption-line {
+  margin-top: 0.75rem;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.5rem;
+}
+

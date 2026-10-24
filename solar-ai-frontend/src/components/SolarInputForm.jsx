@@ -14,13 +14,15 @@ export default function SolarInputForm({
   isLoading,
   isBackendConnected,
   onOpenBatchModal,
+  dateRange,
+  onSiteOrDateChange,
 }) {
   const [selectedSiteId, setSelectedSiteId] = useState('site-1');
   const [isFetchingExample, setIsFetchingExample] = useState(false);
 
   // Four typed fields kept as strings while typing
   const [inputs, setInputs] = useState({
-    timestamp: '2021-06-15T13:30',
+    timestamp: '2020-06-15T13:30',
     SolarGeneration: '8.8',
     AirTemperature: '27.5',
     RelativeHumidity: '50',
@@ -29,14 +31,28 @@ export default function SolarInputForm({
 
   const [formErrors, setFormErrors] = useState({});
 
+  const currentSite = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
+
+  const handleSiteChange = (newSiteId) => {
+    setSelectedSiteId(newSiteId);
+    const siteObj = SOLAR_SITES.find((s) => s.id === newSiteId) || SOLAR_SITES[0];
+    if (onSiteOrDateChange) {
+      onSiteOrDateChange(siteObj, inputs.timestamp);
+    }
+  };
+
   const handleInputChange = (field, value) => {
-    setInputs((prev) => ({ ...prev, [field]: value }));
+    setInputs((prev) => {
+      const next = { ...prev, [field]: value };
+      if (field === 'timestamp' && onSiteOrDateChange) {
+        onSiteOrDateChange(currentSite, value);
+      }
+      return next;
+    });
     if (formErrors[field]) {
       setFormErrors((prev) => ({ ...prev, [field]: null }));
     }
   };
-
-  const currentSite = SOLAR_SITES.find((s) => s.id === selectedSiteId) || SOLAR_SITES[0];
 
   // One dropdown-free "Fill example values" button
   const handleFillExampleValues = async () => {
@@ -141,7 +157,7 @@ export default function SolarInputForm({
             <select
               id="site-select"
               value={selectedSiteId}
-              onChange={(e) => setSelectedSiteId(e.target.value)}
+              onChange={(e) => handleSiteChange(e.target.value)}
               className="form-select"
               disabled={isLoading}
             >
@@ -166,6 +182,8 @@ export default function SolarInputForm({
               id="timestamp-input"
               type="datetime-local"
               value={inputs.timestamp}
+              min={dateRange?.min ? `${dateRange.min}T00:00` : (dateRange?.start ? `${dateRange.start}T00:00` : undefined)}
+              max={dateRange?.max ? `${dateRange.max}T23:59` : (dateRange?.end ? `${dateRange.end}T23:59` : undefined)}
               onChange={(e) => handleInputChange('timestamp', e.target.value)}
               className={`form-input ${formErrors.timestamp ? 'error' : ''}`}
               disabled={isLoading}
@@ -174,7 +192,9 @@ export default function SolarInputForm({
               <div className="field-error-msg">{formErrors.timestamp}</div>
             )}
             <div className="field-helper">
-              Records available from Jan 2020 to Apr 2022
+              {dateRange
+                ? `Records available from ${dateRange.start || dateRange.min} to ${dateRange.end || dateRange.max}`
+                : 'Records available from Jan 2020 to Apr 2022'}
             </div>
           </div>
         </div>
