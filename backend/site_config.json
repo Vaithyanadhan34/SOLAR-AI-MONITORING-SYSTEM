@@ -1,0 +1,82 @@
+{
+  "sites": {
+    "site-1": {
+      "id": "site-1",
+      "name": "Site 1 (Campus 2)",
+      "campusKey": 2,
+      "siteKey": 1,
+      "capacity_kwp": 25.0,
+      "panels": 100,
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "location_name": "Chennai, Tamil Nadu, India",
+      "timezone": "Asia/Kolkata",
+      "tilt_deg": 15.0,
+      "azimuth_deg": 180.0
+    },
+    "site-2": {
+      "id": "site-2",
+      "name": "Site 2 (Campus 2)",
+      "campusKey": 2,
+      "siteKey": 2,
+      "capacity_kwp": 20.0,
+      "panels": 80,
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "location_name": "Chennai, Tamil Nadu, India",
+      "timezone": "Asia/Kolkata",
+      "tilt_deg": 15.0,
+      "azimuth_deg": 180.0
+    },
+    "site-3": {
+      "id": "site-3",
+      "name": "Site 3 (Campus 2)",
+      "campusKey": 2,
+      "siteKey": 3,
+      "capacity_kwp": 15.0,
+      "panels": 60,
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "location_name": "Chennai, Tamil Nadu, India",
+      "timezone": "Asia/Kolkata",
+      "tilt_deg": 15.0,
+      "azimuth_deg": 180.0
+    },
+    "site-4": {
+      "id": "site-4",
+      "name": "Site 11 (Campus 3)",
+      "campusKey": 3,
+      "siteKey": 11,
+      "capacity_kwp": 100.0,
+      "panels": 400,
+      "latitude": 10.7905,
+      "longitude": 78.7047,
+      "location_name": "Trichy, Tamil Nadu, India",
+      "timezone": "Asia/Kolkata",
+      "tilt_deg": 15.0,
+      "azimuth_deg": 180.0
+    },
+    "site-5": {
+      "id": "site-5",
+      "name": "Site 27 (Campus 1)",
+      "campusKey": 1,
+      "siteKey": 27,
+      "capacity_kwp": 100.0,
+      "panels": 400,
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "location_name": "Chennai, Tamil Nadu, India",
+      "timezone": "Asia/Kolkata",
+      "tilt_deg": 15.0,
+      "azimuth_deg": 180.0
+    }
+  },
+  "default_location": {
+    "latitude": 13.0827,
+    "longitude": 80.2707,
+    "location_name": "Chennai, Tamil Nadu, India",
+    "timezone": "Asia/Kolkata",
+    "tilt_deg": 15.0,
+    "azimuth_deg": 180.0
+  }
+}

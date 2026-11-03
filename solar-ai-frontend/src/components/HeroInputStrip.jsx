@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSolar } from '../context/SolarContext';
 import { fetchSites, fetchDatasetValues } from '../services/api';
 
 const DEFAULT_SITES = [
@@ -6,6 +7,12 @@ const DEFAULT_SITES = [
   { id: 'site-2', name: 'Site 2 (Campus 2)', campusKey: 2, siteKey: 2, capacity: '20.0', panels: '80' },
   { id: 'site-3', name: 'Site 3 (Campus 2)', campusKey: 2, siteKey: 3, capacity: '30.0', panels: '120' },
 ];
+
+const getNowIso = () => {
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+};
 
 export default function HeroInputStrip({
   onAnalyze,
@@ -15,9 +22,10 @@ export default function HeroInputStrip({
   currentSite,
   currentTimestamp,
 }) {
+  const { siteMinTimestamp, siteMaxTimestamp, getDefaultTimestampForSite } = useSolar();
   const [sites, setSites] = useState(DEFAULT_SITES);
   const [selectedSiteId, setSelectedSiteId] = useState(currentSite?.id || 'site-1');
-  const [timestamp, setTimestamp] = useState(currentTimestamp || '2020-06-15T13:30');
+  const [timestamp, setTimestamp] = useState(currentTimestamp || '2020-08-18T12:00');
   const [actualPower, setActualPower] = useState('18.5');
   const [airTemp, setAirTemp] = useState('28.5');
   const [humidity, setHumidity] = useState('42.0');
@@ -65,9 +73,10 @@ export default function HeroInputStrip({
     setIsAutoLoading(true);
     try {
       const data = await fetchDatasetValues(s.campusKey, s.siteKey, ts);
-      if (data?.success && data.values) {
-        const v = data.values;
-        if (v.SolarGeneration !== undefined) setActualPower(String(v.SolarGeneration));
+      if (data?.success) {
+        const v = data.values || data;
+        const gen = v.SolarGeneration !== undefined ? v.SolarGeneration : v.actual_generation;
+        if (gen !== undefined) setActualPower(String(gen));
         if (v.AirTemperature !== undefined) setAirTemp(String(v.AirTemperature));
         if (v.RelativeHumidity !== undefined) setHumidity(String(v.RelativeHumidity));
         if (v.WindSpeed !== undefined) setWindSpeed(String(v.WindSpeed));
@@ -83,10 +92,20 @@ export default function HeroInputStrip({
     const newId = e.target.value;
     setSelectedSiteId(newId);
     const chosen = sites.find((s) => s.id === newId);
-    if (onSiteOrDateChange && chosen) {
-      onSiteOrDateChange(chosen, timestamp);
+    let nextTs = timestamp;
+    if (chosen) {
+      const sMin = chosen.start_date || chosen.dateRange?.start || '2020-01-01';
+      const sMax = chosen.end_date || chosen.dateRange?.end || '2022-04-23';
+      const curDate = (timestamp || '').slice(0, 10);
+      if (!curDate || curDate < sMin || curDate > sMax) {
+        nextTs = getDefaultTimestampForSite ? getDefaultTimestampForSite(chosen) : `${sMin}T12:00`;
+        setTimestamp(nextTs);
+      }
+      if (onSiteOrDateChange) {
+        onSiteOrDateChange(chosen, nextTs);
+      }
     }
-    autoPopulateValues(newId, timestamp);
+    autoPopulateValues(newId, nextTs);
   };
 
   const handleTimestampChange = (e) => {
@@ -133,7 +152,7 @@ export default function HeroInputStrip({
       <div className="hero-content">
         <div className="hero-header-row">
           <h2 className="hero-title">Your panels</h2>
-          <span className="hero-badge">{isAutoLoading ? 'Syncing...' : 'Live entry'}</span>
+          <span className="hero-badge">{isAutoLoading ? 'Syncing...' : 'Historical entry'}</span>
         </div>
 
         <form onSubmit={handleSubmit} className="hero-form">
@@ -147,11 +166,16 @@ export default function HeroInputStrip({
                 value={selectedSiteId}
                 onChange={handleSiteChange}
               >
-                {sites.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.name} ({s.capacity} kWp)
-                  </option>
-                ))}
+                {sites.map((s) => {
+                  const label = s.name && s.name.includes('kWp')
+                    ? s.name
+                    : `${s.name} (${s.capacity} kWp)`;
+                  return (
+                    <option key={s.id} value={s.id}>
+                      {label}
+                    </option>
+                  );
+                })}
               </select>
             </div>
 
@@ -162,8 +186,8 @@ export default function HeroInputStrip({
                 type="datetime-local"
                 className="compact-input"
                 value={timestamp}
-                min="2020-01-01T00:00"
-                max="2022-12-31T23:59"
+                min={siteMinTimestamp || '2020-01-01T00:00'}
+                max={siteMaxTimestamp || '2026-12-31T23:59'}
                 onChange={handleTimestampChange}
                 required
               />
@@ -232,7 +256,7 @@ export default function HeroInputStrip({
                 <input
                   id="humidity-input"
                   type="number"
-                  step="1"
+                  step="0.1"
                   min="0"
                   max="100"
                   className="compact-input"

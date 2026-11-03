@@ -1,0 +1,1362 @@
+{
+  "default": {
+    "siteId": "default",
+    "campusKey": 0,
+    "siteKey": 0,
+    "p25": 0.818,
+    "p50": 0.983,
+    "p75": 1.127,
+    "sample_count": 531461,
+    "grades": {
+      "Very Good": "PR >= 1.13",
+      "Normal": "0.82 <= PR < 1.13",
+      "Bad": "PR < 0.82 or anomaly"
+    },
+    "bias_factor": 1.0,
+    "train_median_pr": 1.0
+  },
+  "1_14": {
+    "siteId": "campus-1-site-14",
+    "campusKey": 1,
+    "siteKey": 14,
+    "p25": 0.831,
+    "p50": 0.966,
+    "p75": 1.047,
+    "sample_count": 12831,
+    "grades": {
+      "Very Good": "PR >= 1.05",
+      "Normal": "0.83 <= PR < 1.05",
+      "Bad": "PR < 0.83 or anomaly"
+    },
+    "bias_factor": 1.0231,
+    "train_median_pr": 0.977
+  },
+  "campus-1-site-14": {
+    "siteId": "campus-1-site-14",
+    "campusKey": 1,
+    "siteKey": 14,
+    "p25": 0.831,
+    "p50": 0.966,
+    "p75": 1.047,
+    "sample_count": 12831,
+    "grades": {
+      "Very Good": "PR >= 1.05",
+      "Normal": "0.83 <= PR < 1.05",
+      "Bad": "PR < 0.83 or anomaly"
+    },
+    "bias_factor": 1.0231,
+    "train_median_pr": 0.977
+  },
+  "1_15": {
+    "siteId": "campus-1-site-15",
+    "campusKey": 1,
+    "siteKey": 15,
+    "p25": 0.827,
+    "p50": 0.993,
+    "p75": 1.103,
+    "sample_count": 14054,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.83 <= PR < 1.10",
+      "Bad": "PR < 0.83 or anomaly"
+    },
+    "bias_factor": 1.0177,
+    "train_median_pr": 0.983
+  },
+  "campus-1-site-15": {
+    "siteId": "campus-1-site-15",
+    "campusKey": 1,
+    "siteKey": 15,
+    "p25": 0.827,
+    "p50": 0.993,
+    "p75": 1.103,
+    "sample_count": 14054,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.83 <= PR < 1.10",
+      "Bad": "PR < 0.83 or anomaly"
+    },
+    "bias_factor": 1.0177,
+    "train_median_pr": 0.983
+  },
+  "1_16": {
+    "siteId": "campus-1-site-16",
+    "campusKey": 1,
+    "siteKey": 16,
+    "p25": 0.877,
+    "p50": 0.98,
+    "p75": 1.078,
+    "sample_count": 5524,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.88 <= PR < 1.08",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.0321,
+    "train_median_pr": 0.969
+  },
+  "campus-1-site-16": {
+    "siteId": "campus-1-site-16",
+    "campusKey": 1,
+    "siteKey": 16,
+    "p25": 0.877,
+    "p50": 0.98,
+    "p75": 1.078,
+    "sample_count": 5524,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.88 <= PR < 1.08",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.0321,
+    "train_median_pr": 0.969
+  },
+  "1_17": {
+    "siteId": "campus-1-site-17",
+    "campusKey": 1,
+    "siteKey": 17,
+    "p25": 0.881,
+    "p50": 0.979,
+    "p75": 1.053,
+    "sample_count": 12708,
+    "grades": {
+      "Very Good": "PR >= 1.05",
+      "Normal": "0.88 <= PR < 1.05",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.0334,
+    "train_median_pr": 0.968
+  },
+  "campus-1-site-17": {
+    "siteId": "campus-1-site-17",
+    "campusKey": 1,
+    "siteKey": 17,
+    "p25": 0.881,
+    "p50": 0.979,
+    "p75": 1.053,
+    "sample_count": 12708,
+    "grades": {
+      "Very Good": "PR >= 1.05",
+      "Normal": "0.88 <= PR < 1.05",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.0334,
+    "train_median_pr": 0.968
+  },
+  "1_18": {
+    "siteId": "campus-1-site-18",
+    "campusKey": 1,
+    "siteKey": 18,
+    "p25": 0.905,
+    "p50": 1.028,
+    "p75": 1.109,
+    "sample_count": 13276,
+    "grades": {
+      "Very Good": "PR >= 1.11",
+      "Normal": "0.90 <= PR < 1.11",
+      "Bad": "PR < 0.90 or anomaly"
+    },
+    "bias_factor": 1.0317,
+    "train_median_pr": 0.969
+  },
+  "campus-1-site-18": {
+    "siteId": "campus-1-site-18",
+    "campusKey": 1,
+    "siteKey": 18,
+    "p25": 0.905,
+    "p50": 1.028,
+    "p75": 1.109,
+    "sample_count": 13276,
+    "grades": {
+      "Very Good": "PR >= 1.11",
+      "Normal": "0.90 <= PR < 1.11",
+      "Bad": "PR < 0.90 or anomaly"
+    },
+    "bias_factor": 1.0317,
+    "train_median_pr": 0.969
+  },
+  "1_19": {
+    "siteId": "campus-1-site-19",
+    "campusKey": 1,
+    "siteKey": 19,
+    "p25": 0.857,
+    "p50": 0.958,
+    "p75": 1.018,
+    "sample_count": 13534,
+    "grades": {
+      "Very Good": "PR >= 1.02",
+      "Normal": "0.86 <= PR < 1.02",
+      "Bad": "PR < 0.86 or anomaly"
+    },
+    "bias_factor": 1.0223,
+    "train_median_pr": 0.978
+  },
+  "campus-1-site-19": {
+    "siteId": "campus-1-site-19",
+    "campusKey": 1,
+    "siteKey": 19,
+    "p25": 0.857,
+    "p50": 0.958,
+    "p75": 1.018,
+    "sample_count": 13534,
+    "grades": {
+      "Very Good": "PR >= 1.02",
+      "Normal": "0.86 <= PR < 1.02",
+      "Bad": "PR < 0.86 or anomaly"
+    },
+    "bias_factor": 1.0223,
+    "train_median_pr": 0.978
+  },
+  "1_20": {
+    "siteId": "campus-1-site-20",
+    "campusKey": 1,
+    "siteKey": 20,
+    "p25": 0.972,
+    "p50": 1.145,
+    "p75": 1.245,
+    "sample_count": 13489,
+    "grades": {
+      "Very Good": "PR >= 1.25",
+      "Normal": "0.97 <= PR < 1.25",
+      "Bad": "PR < 0.97 or anomaly"
+    },
+    "bias_factor": 1.0212,
+    "train_median_pr": 0.979
+  },
+  "campus-1-site-20": {
+    "siteId": "campus-1-site-20",
+    "campusKey": 1,
+    "siteKey": 20,
+    "p25": 0.972,
+    "p50": 1.145,
+    "p75": 1.245,
+    "sample_count": 13489,
+    "grades": {
+      "Very Good": "PR >= 1.25",
+      "Normal": "0.97 <= PR < 1.25",
+      "Bad": "PR < 0.97 or anomaly"
+    },
+    "bias_factor": 1.0212,
+    "train_median_pr": 0.979
+  },
+  "1_21": {
+    "siteId": "campus-1-site-21",
+    "campusKey": 1,
+    "siteKey": 21,
+    "p25": 0.743,
+    "p50": 0.803,
+    "p75": 0.853,
+    "sample_count": 12601,
+    "grades": {
+      "Very Good": "PR >= 0.85",
+      "Normal": "0.74 <= PR < 0.85",
+      "Bad": "PR < 0.74 or anomaly"
+    },
+    "bias_factor": 1.0223,
+    "train_median_pr": 0.978
+  },
+  "campus-1-site-21": {
+    "siteId": "campus-1-site-21",
+    "campusKey": 1,
+    "siteKey": 21,
+    "p25": 0.743,
+    "p50": 0.803,
+    "p75": 0.853,
+    "sample_count": 12601,
+    "grades": {
+      "Very Good": "PR >= 0.85",
+      "Normal": "0.74 <= PR < 0.85",
+      "Bad": "PR < 0.74 or anomaly"
+    },
+    "bias_factor": 1.0223,
+    "train_median_pr": 0.978
+  },
+  "1_22": {
+    "siteId": "campus-1-site-22",
+    "campusKey": 1,
+    "siteKey": 22,
+    "p25": 0.855,
+    "p50": 0.988,
+    "p75": 1.088,
+    "sample_count": 13488,
+    "grades": {
+      "Very Good": "PR >= 1.09",
+      "Normal": "0.85 <= PR < 1.09",
+      "Bad": "PR < 0.85 or anomaly"
+    },
+    "bias_factor": 1.0246,
+    "train_median_pr": 0.976
+  },
+  "campus-1-site-22": {
+    "siteId": "campus-1-site-22",
+    "campusKey": 1,
+    "siteKey": 22,
+    "p25": 0.855,
+    "p50": 0.988,
+    "p75": 1.088,
+    "sample_count": 13488,
+    "grades": {
+      "Very Good": "PR >= 1.09",
+      "Normal": "0.85 <= PR < 1.09",
+      "Bad": "PR < 0.85 or anomaly"
+    },
+    "bias_factor": 1.0246,
+    "train_median_pr": 0.976
+  },
+  "1_23": {
+    "siteId": "campus-1-site-23",
+    "campusKey": 1,
+    "siteKey": 23,
+    "p25": 0.672,
+    "p50": 0.812,
+    "p75": 0.921,
+    "sample_count": 11748,
+    "grades": {
+      "Very Good": "PR >= 0.92",
+      "Normal": "0.67 <= PR < 0.92",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0307,
+    "train_median_pr": 0.97
+  },
+  "campus-1-site-23": {
+    "siteId": "campus-1-site-23",
+    "campusKey": 1,
+    "siteKey": 23,
+    "p25": 0.672,
+    "p50": 0.812,
+    "p75": 0.921,
+    "sample_count": 11748,
+    "grades": {
+      "Very Good": "PR >= 0.92",
+      "Normal": "0.67 <= PR < 0.92",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0307,
+    "train_median_pr": 0.97
+  },
+  "1_24": {
+    "siteId": "campus-1-site-24",
+    "campusKey": 1,
+    "siteKey": 24,
+    "p25": 0.788,
+    "p50": 1.007,
+    "p75": 1.137,
+    "sample_count": 13826,
+    "grades": {
+      "Very Good": "PR >= 1.14",
+      "Normal": "0.79 <= PR < 1.14",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 0.9998,
+    "train_median_pr": 1.0
+  },
+  "campus-1-site-24": {
+    "siteId": "campus-1-site-24",
+    "campusKey": 1,
+    "siteKey": 24,
+    "p25": 0.788,
+    "p50": 1.007,
+    "p75": 1.137,
+    "sample_count": 13826,
+    "grades": {
+      "Very Good": "PR >= 1.14",
+      "Normal": "0.79 <= PR < 1.14",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 0.9998,
+    "train_median_pr": 1.0
+  },
+  "1_25": {
+    "siteId": "campus-1-site-25",
+    "campusKey": 1,
+    "siteKey": 25,
+    "p25": 0.742,
+    "p50": 0.885,
+    "p75": 0.975,
+    "sample_count": 13586,
+    "grades": {
+      "Very Good": "PR >= 0.98",
+      "Normal": "0.74 <= PR < 0.98",
+      "Bad": "PR < 0.74 or anomaly"
+    },
+    "bias_factor": 1.0479,
+    "train_median_pr": 0.954
+  },
+  "campus-1-site-25": {
+    "siteId": "campus-1-site-25",
+    "campusKey": 1,
+    "siteKey": 25,
+    "p25": 0.742,
+    "p50": 0.885,
+    "p75": 0.975,
+    "sample_count": 13586,
+    "grades": {
+      "Very Good": "PR >= 0.98",
+      "Normal": "0.74 <= PR < 0.98",
+      "Bad": "PR < 0.74 or anomaly"
+    },
+    "bias_factor": 1.0479,
+    "train_median_pr": 0.954
+  },
+  "1_26": {
+    "siteId": "campus-1-site-26",
+    "campusKey": 1,
+    "siteKey": 26,
+    "p25": 0.938,
+    "p50": 1.085,
+    "p75": 1.187,
+    "sample_count": 12308,
+    "grades": {
+      "Very Good": "PR >= 1.19",
+      "Normal": "0.94 <= PR < 1.19",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.018,
+    "train_median_pr": 0.982
+  },
+  "campus-1-site-26": {
+    "siteId": "campus-1-site-26",
+    "campusKey": 1,
+    "siteKey": 26,
+    "p25": 0.938,
+    "p50": 1.085,
+    "p75": 1.187,
+    "sample_count": 12308,
+    "grades": {
+      "Very Good": "PR >= 1.19",
+      "Normal": "0.94 <= PR < 1.19",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.018,
+    "train_median_pr": 0.982
+  },
+  "1_27": {
+    "siteId": "campus-1-site-27",
+    "campusKey": 1,
+    "siteKey": 27,
+    "p25": 0.908,
+    "p50": 1.054,
+    "p75": 1.158,
+    "sample_count": 16588,
+    "grades": {
+      "Very Good": "PR >= 1.16",
+      "Normal": "0.91 <= PR < 1.16",
+      "Bad": "PR < 0.91 or anomaly"
+    },
+    "bias_factor": 1.0288,
+    "train_median_pr": 0.972
+  },
+  "campus-1-site-27": {
+    "siteId": "campus-1-site-27",
+    "campusKey": 1,
+    "siteKey": 27,
+    "p25": 0.908,
+    "p50": 1.054,
+    "p75": 1.158,
+    "sample_count": 16588,
+    "grades": {
+      "Very Good": "PR >= 1.16",
+      "Normal": "0.91 <= PR < 1.16",
+      "Bad": "PR < 0.91 or anomaly"
+    },
+    "bias_factor": 1.0288,
+    "train_median_pr": 0.972
+  },
+  "1_28": {
+    "siteId": "campus-1-site-28",
+    "campusKey": 1,
+    "siteKey": 28,
+    "p25": 0.758,
+    "p50": 0.863,
+    "p75": 0.953,
+    "sample_count": 7898,
+    "grades": {
+      "Very Good": "PR >= 0.95",
+      "Normal": "0.76 <= PR < 0.95",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0221,
+    "train_median_pr": 0.978
+  },
+  "campus-1-site-28": {
+    "siteId": "campus-1-site-28",
+    "campusKey": 1,
+    "siteKey": 28,
+    "p25": 0.758,
+    "p50": 0.863,
+    "p75": 0.953,
+    "sample_count": 7898,
+    "grades": {
+      "Very Good": "PR >= 0.95",
+      "Normal": "0.76 <= PR < 0.95",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0221,
+    "train_median_pr": 0.978
+  },
+  "1_29": {
+    "siteId": "campus-1-site-29",
+    "campusKey": 1,
+    "siteKey": 29,
+    "p25": 0.763,
+    "p50": 0.87,
+    "p75": 0.975,
+    "sample_count": 8203,
+    "grades": {
+      "Very Good": "PR >= 0.97",
+      "Normal": "0.76 <= PR < 0.97",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0748,
+    "train_median_pr": 0.93
+  },
+  "campus-1-site-29": {
+    "siteId": "campus-1-site-29",
+    "campusKey": 1,
+    "siteKey": 29,
+    "p25": 0.763,
+    "p50": 0.87,
+    "p75": 0.975,
+    "sample_count": 8203,
+    "grades": {
+      "Very Good": "PR >= 0.97",
+      "Normal": "0.76 <= PR < 0.97",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0748,
+    "train_median_pr": 0.93
+  },
+  "1_30": {
+    "siteId": "campus-1-site-30",
+    "campusKey": 1,
+    "siteKey": 30,
+    "p25": 0.793,
+    "p50": 0.872,
+    "p75": 0.941,
+    "sample_count": 11086,
+    "grades": {
+      "Very Good": "PR >= 0.94",
+      "Normal": "0.79 <= PR < 0.94",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 1.0136,
+    "train_median_pr": 0.987
+  },
+  "campus-1-site-30": {
+    "siteId": "campus-1-site-30",
+    "campusKey": 1,
+    "siteKey": 30,
+    "p25": 0.793,
+    "p50": 0.872,
+    "p75": 0.941,
+    "sample_count": 11086,
+    "grades": {
+      "Very Good": "PR >= 0.94",
+      "Normal": "0.79 <= PR < 0.94",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 1.0136,
+    "train_median_pr": 0.987
+  },
+  "1_31": {
+    "siteId": "campus-1-site-31",
+    "campusKey": 1,
+    "siteKey": 31,
+    "p25": 0.67,
+    "p50": 0.866,
+    "p75": 0.981,
+    "sample_count": 13830,
+    "grades": {
+      "Very Good": "PR >= 0.98",
+      "Normal": "0.67 <= PR < 0.98",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0258,
+    "train_median_pr": 0.975
+  },
+  "campus-1-site-31": {
+    "siteId": "campus-1-site-31",
+    "campusKey": 1,
+    "siteKey": 31,
+    "p25": 0.67,
+    "p50": 0.866,
+    "p75": 0.981,
+    "sample_count": 13830,
+    "grades": {
+      "Very Good": "PR >= 0.98",
+      "Normal": "0.67 <= PR < 0.98",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0258,
+    "train_median_pr": 0.975
+  },
+  "1_32": {
+    "siteId": "campus-1-site-32",
+    "campusKey": 1,
+    "siteKey": 32,
+    "p25": 0.778,
+    "p50": 0.917,
+    "p75": 1.034,
+    "sample_count": 12441,
+    "grades": {
+      "Very Good": "PR >= 1.03",
+      "Normal": "0.78 <= PR < 1.03",
+      "Bad": "PR < 0.78 or anomaly"
+    },
+    "bias_factor": 1.0104,
+    "train_median_pr": 0.99
+  },
+  "campus-1-site-32": {
+    "siteId": "campus-1-site-32",
+    "campusKey": 1,
+    "siteKey": 32,
+    "p25": 0.778,
+    "p50": 0.917,
+    "p75": 1.034,
+    "sample_count": 12441,
+    "grades": {
+      "Very Good": "PR >= 1.03",
+      "Normal": "0.78 <= PR < 1.03",
+      "Bad": "PR < 0.78 or anomaly"
+    },
+    "bias_factor": 1.0104,
+    "train_median_pr": 0.99
+  },
+  "1_33": {
+    "siteId": "campus-1-site-33",
+    "campusKey": 1,
+    "siteKey": 33,
+    "p25": 0.764,
+    "p50": 0.967,
+    "p75": 1.102,
+    "sample_count": 13835,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.76 <= PR < 1.10",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0141,
+    "train_median_pr": 0.986
+  },
+  "campus-1-site-33": {
+    "siteId": "campus-1-site-33",
+    "campusKey": 1,
+    "siteKey": 33,
+    "p25": 0.764,
+    "p50": 0.967,
+    "p75": 1.102,
+    "sample_count": 13835,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.76 <= PR < 1.10",
+      "Bad": "PR < 0.76 or anomaly"
+    },
+    "bias_factor": 1.0141,
+    "train_median_pr": 0.986
+  },
+  "1_34": {
+    "siteId": "campus-1-site-34",
+    "campusKey": 1,
+    "siteKey": 34,
+    "p25": 1.084,
+    "p50": 1.221,
+    "p75": 1.354,
+    "sample_count": 10690,
+    "grades": {
+      "Very Good": "PR >= 1.35",
+      "Normal": "1.08 <= PR < 1.35",
+      "Bad": "PR < 1.08 or anomaly"
+    },
+    "bias_factor": 1.0145,
+    "train_median_pr": 0.986
+  },
+  "campus-1-site-34": {
+    "siteId": "campus-1-site-34",
+    "campusKey": 1,
+    "siteKey": 34,
+    "p25": 1.084,
+    "p50": 1.221,
+    "p75": 1.354,
+    "sample_count": 10690,
+    "grades": {
+      "Very Good": "PR >= 1.35",
+      "Normal": "1.08 <= PR < 1.35",
+      "Bad": "PR < 1.08 or anomaly"
+    },
+    "bias_factor": 1.0145,
+    "train_median_pr": 0.986
+  },
+  "1_35": {
+    "siteId": "campus-1-site-35",
+    "campusKey": 1,
+    "siteKey": 35,
+    "p25": 0.688,
+    "p50": 0.848,
+    "p75": 0.932,
+    "sample_count": 13401,
+    "grades": {
+      "Very Good": "PR >= 0.93",
+      "Normal": "0.69 <= PR < 0.93",
+      "Bad": "PR < 0.69 or anomaly"
+    },
+    "bias_factor": 1.0191,
+    "train_median_pr": 0.981
+  },
+  "campus-1-site-35": {
+    "siteId": "campus-1-site-35",
+    "campusKey": 1,
+    "siteKey": 35,
+    "p25": 0.688,
+    "p50": 0.848,
+    "p75": 0.932,
+    "sample_count": 13401,
+    "grades": {
+      "Very Good": "PR >= 0.93",
+      "Normal": "0.69 <= PR < 0.93",
+      "Bad": "PR < 0.69 or anomaly"
+    },
+    "bias_factor": 1.0191,
+    "train_median_pr": 0.981
+  },
+  "1_36": {
+    "siteId": "campus-1-site-36",
+    "campusKey": 1,
+    "siteKey": 36,
+    "p25": 0.944,
+    "p50": 1.021,
+    "p75": 1.083,
+    "sample_count": 12660,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.94 <= PR < 1.08",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.0165,
+    "train_median_pr": 0.984
+  },
+  "campus-1-site-36": {
+    "siteId": "campus-1-site-36",
+    "campusKey": 1,
+    "siteKey": 36,
+    "p25": 0.944,
+    "p50": 1.021,
+    "p75": 1.083,
+    "sample_count": 12660,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.94 <= PR < 1.08",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.0165,
+    "train_median_pr": 0.984
+  },
+  "1_37": {
+    "siteId": "campus-1-site-37",
+    "campusKey": 1,
+    "siteKey": 37,
+    "p25": 0.954,
+    "p50": 1.025,
+    "p75": 1.082,
+    "sample_count": 12788,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.95 <= PR < 1.08",
+      "Bad": "PR < 0.95 or anomaly"
+    },
+    "bias_factor": 1.0266,
+    "train_median_pr": 0.974
+  },
+  "campus-1-site-37": {
+    "siteId": "campus-1-site-37",
+    "campusKey": 1,
+    "siteKey": 37,
+    "p25": 0.954,
+    "p50": 1.025,
+    "p75": 1.082,
+    "sample_count": 12788,
+    "grades": {
+      "Very Good": "PR >= 1.08",
+      "Normal": "0.95 <= PR < 1.08",
+      "Bad": "PR < 0.95 or anomaly"
+    },
+    "bias_factor": 1.0266,
+    "train_median_pr": 0.974
+  },
+  "1_38": {
+    "siteId": "campus-1-site-38",
+    "campusKey": 1,
+    "siteKey": 38,
+    "p25": 1.072,
+    "p50": 1.162,
+    "p75": 1.218,
+    "sample_count": 12607,
+    "grades": {
+      "Very Good": "PR >= 1.22",
+      "Normal": "1.07 <= PR < 1.22",
+      "Bad": "PR < 1.07 or anomaly"
+    },
+    "bias_factor": 1.0282,
+    "train_median_pr": 0.973
+  },
+  "campus-1-site-38": {
+    "siteId": "campus-1-site-38",
+    "campusKey": 1,
+    "siteKey": 38,
+    "p25": 1.072,
+    "p50": 1.162,
+    "p75": 1.218,
+    "sample_count": 12607,
+    "grades": {
+      "Very Good": "PR >= 1.22",
+      "Normal": "1.07 <= PR < 1.22",
+      "Bad": "PR < 1.07 or anomaly"
+    },
+    "bias_factor": 1.0282,
+    "train_median_pr": 0.973
+  },
+  "1_39": {
+    "siteId": "campus-1-site-39",
+    "campusKey": 1,
+    "siteKey": 39,
+    "p25": 0.771,
+    "p50": 0.948,
+    "p75": 1.036,
+    "sample_count": 10964,
+    "grades": {
+      "Very Good": "PR >= 1.04",
+      "Normal": "0.77 <= PR < 1.04",
+      "Bad": "PR < 0.77 or anomaly"
+    },
+    "bias_factor": 1.0403,
+    "train_median_pr": 0.961
+  },
+  "campus-1-site-39": {
+    "siteId": "campus-1-site-39",
+    "campusKey": 1,
+    "siteKey": 39,
+    "p25": 0.771,
+    "p50": 0.948,
+    "p75": 1.036,
+    "sample_count": 10964,
+    "grades": {
+      "Very Good": "PR >= 1.04",
+      "Normal": "0.77 <= PR < 1.04",
+      "Bad": "PR < 0.77 or anomaly"
+    },
+    "bias_factor": 1.0403,
+    "train_median_pr": 0.961
+  },
+  "1_40": {
+    "siteId": "campus-1-site-40",
+    "campusKey": 1,
+    "siteKey": 40,
+    "p25": 0.615,
+    "p50": 0.793,
+    "p75": 0.946,
+    "sample_count": 13772,
+    "grades": {
+      "Very Good": "PR >= 0.95",
+      "Normal": "0.62 <= PR < 0.95",
+      "Bad": "PR < 0.62 or anomaly"
+    },
+    "bias_factor": 1.0288,
+    "train_median_pr": 0.972
+  },
+  "campus-1-site-40": {
+    "siteId": "campus-1-site-40",
+    "campusKey": 1,
+    "siteKey": 40,
+    "p25": 0.615,
+    "p50": 0.793,
+    "p75": 0.946,
+    "sample_count": 13772,
+    "grades": {
+      "Very Good": "PR >= 0.95",
+      "Normal": "0.62 <= PR < 0.95",
+      "Bad": "PR < 0.62 or anomaly"
+    },
+    "bias_factor": 1.0288,
+    "train_median_pr": 0.972
+  },
+  "2_1": {
+    "siteId": "site-1",
+    "campusKey": 2,
+    "siteKey": 1,
+    "p25": 1.035,
+    "p50": 1.23,
+    "p75": 1.423,
+    "sample_count": 19240,
+    "grades": {
+      "Very Good": "PR >= 1.42",
+      "Normal": "1.04 <= PR < 1.42",
+      "Bad": "PR < 1.04 or anomaly"
+    },
+    "bias_factor": 1.0056,
+    "train_median_pr": 0.994
+  },
+  "site-1": {
+    "siteId": "site-1",
+    "campusKey": 2,
+    "siteKey": 1,
+    "p25": 1.035,
+    "p50": 1.23,
+    "p75": 1.423,
+    "sample_count": 19240,
+    "grades": {
+      "Very Good": "PR >= 1.42",
+      "Normal": "1.04 <= PR < 1.42",
+      "Bad": "PR < 1.04 or anomaly"
+    },
+    "bias_factor": 1.0056,
+    "train_median_pr": 0.994
+  },
+  "2_2": {
+    "siteId": "site-2",
+    "campusKey": 2,
+    "siteKey": 2,
+    "p25": 0.845,
+    "p50": 1.051,
+    "p75": 1.209,
+    "sample_count": 18805,
+    "grades": {
+      "Very Good": "PR >= 1.21",
+      "Normal": "0.84 <= PR < 1.21",
+      "Bad": "PR < 0.84 or anomaly"
+    },
+    "bias_factor": 1.0081,
+    "train_median_pr": 0.992
+  },
+  "site-2": {
+    "siteId": "site-2",
+    "campusKey": 2,
+    "siteKey": 2,
+    "p25": 0.845,
+    "p50": 1.051,
+    "p75": 1.209,
+    "sample_count": 18805,
+    "grades": {
+      "Very Good": "PR >= 1.21",
+      "Normal": "0.84 <= PR < 1.21",
+      "Bad": "PR < 0.84 or anomaly"
+    },
+    "bias_factor": 1.0081,
+    "train_median_pr": 0.992
+  },
+  "2_3": {
+    "siteId": "site-3",
+    "campusKey": 2,
+    "siteKey": 3,
+    "p25": 0.813,
+    "p50": 1.032,
+    "p75": 1.239,
+    "sample_count": 18866,
+    "grades": {
+      "Very Good": "PR >= 1.24",
+      "Normal": "0.81 <= PR < 1.24",
+      "Bad": "PR < 0.81 or anomaly"
+    },
+    "bias_factor": 1.0322,
+    "train_median_pr": 0.969
+  },
+  "site-3": {
+    "siteId": "site-3",
+    "campusKey": 2,
+    "siteKey": 3,
+    "p25": 0.813,
+    "p50": 1.032,
+    "p75": 1.239,
+    "sample_count": 18866,
+    "grades": {
+      "Very Good": "PR >= 1.24",
+      "Normal": "0.81 <= PR < 1.24",
+      "Bad": "PR < 0.81 or anomaly"
+    },
+    "bias_factor": 1.0322,
+    "train_median_pr": 0.969
+  },
+  "2_4": {
+    "siteId": "site-4",
+    "campusKey": 2,
+    "siteKey": 4,
+    "p25": 0.935,
+    "p50": 0.996,
+    "p75": 1.059,
+    "sample_count": 3986,
+    "grades": {
+      "Very Good": "PR >= 1.06",
+      "Normal": "0.94 <= PR < 1.06",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.7931,
+    "train_median_pr": 0.558
+  },
+  "site-4": {
+    "siteId": "site-4",
+    "campusKey": 2,
+    "siteKey": 4,
+    "p25": 0.935,
+    "p50": 0.996,
+    "p75": 1.059,
+    "sample_count": 3986,
+    "grades": {
+      "Very Good": "PR >= 1.06",
+      "Normal": "0.94 <= PR < 1.06",
+      "Bad": "PR < 0.94 or anomaly"
+    },
+    "bias_factor": 1.7931,
+    "train_median_pr": 0.558
+  },
+  "2_5": {
+    "siteId": "site-5",
+    "campusKey": 2,
+    "siteKey": 5,
+    "p25": 0.958,
+    "p50": 1.024,
+    "p75": 1.096,
+    "sample_count": 3953,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.96 <= PR < 1.10",
+      "Bad": "PR < 0.96 or anomaly"
+    },
+    "bias_factor": 1.0625,
+    "train_median_pr": 0.941
+  },
+  "site-5": {
+    "siteId": "site-5",
+    "campusKey": 2,
+    "siteKey": 5,
+    "p25": 0.958,
+    "p50": 1.024,
+    "p75": 1.096,
+    "sample_count": 3953,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.96 <= PR < 1.10",
+      "Bad": "PR < 0.96 or anomaly"
+    },
+    "bias_factor": 1.0625,
+    "train_median_pr": 0.941
+  },
+  "3_6": {
+    "siteId": "campus-3-site-6",
+    "campusKey": 3,
+    "siteKey": 6,
+    "p25": 0.92,
+    "p50": 0.996,
+    "p75": 1.067,
+    "sample_count": 7682,
+    "grades": {
+      "Very Good": "PR >= 1.07",
+      "Normal": "0.92 <= PR < 1.07",
+      "Bad": "PR < 0.92 or anomaly"
+    },
+    "bias_factor": 0.9952,
+    "train_median_pr": 1.005
+  },
+  "campus-3-site-6": {
+    "siteId": "campus-3-site-6",
+    "campusKey": 3,
+    "siteKey": 6,
+    "p25": 0.92,
+    "p50": 0.996,
+    "p75": 1.067,
+    "sample_count": 7682,
+    "grades": {
+      "Very Good": "PR >= 1.07",
+      "Normal": "0.92 <= PR < 1.07",
+      "Bad": "PR < 0.92 or anomaly"
+    },
+    "bias_factor": 0.9952,
+    "train_median_pr": 1.005
+  },
+  "3_7": {
+    "siteId": "campus-3-site-7",
+    "campusKey": 3,
+    "siteKey": 7,
+    "p25": 0.686,
+    "p50": 0.899,
+    "p75": 1.034,
+    "sample_count": 12939,
+    "grades": {
+      "Very Good": "PR >= 1.03",
+      "Normal": "0.69 <= PR < 1.03",
+      "Bad": "PR < 0.69 or anomaly"
+    },
+    "bias_factor": 1.0168,
+    "train_median_pr": 0.983
+  },
+  "campus-3-site-7": {
+    "siteId": "campus-3-site-7",
+    "campusKey": 3,
+    "siteKey": 7,
+    "p25": 0.686,
+    "p50": 0.899,
+    "p75": 1.034,
+    "sample_count": 12939,
+    "grades": {
+      "Very Good": "PR >= 1.03",
+      "Normal": "0.69 <= PR < 1.03",
+      "Bad": "PR < 0.69 or anomaly"
+    },
+    "bias_factor": 1.0168,
+    "train_median_pr": 0.983
+  },
+  "3_8": {
+    "siteId": "campus-3-site-8",
+    "campusKey": 3,
+    "siteKey": 8,
+    "p25": 0.878,
+    "p50": 0.992,
+    "p75": 1.069,
+    "sample_count": 7559,
+    "grades": {
+      "Very Good": "PR >= 1.07",
+      "Normal": "0.88 <= PR < 1.07",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.001,
+    "train_median_pr": 0.999
+  },
+  "campus-3-site-8": {
+    "siteId": "campus-3-site-8",
+    "campusKey": 3,
+    "siteKey": 8,
+    "p25": 0.878,
+    "p50": 0.992,
+    "p75": 1.069,
+    "sample_count": 7559,
+    "grades": {
+      "Very Good": "PR >= 1.07",
+      "Normal": "0.88 <= PR < 1.07",
+      "Bad": "PR < 0.88 or anomaly"
+    },
+    "bias_factor": 1.001,
+    "train_median_pr": 0.999
+  },
+  "3_9": {
+    "siteId": "campus-3-site-9",
+    "campusKey": 3,
+    "siteKey": 9,
+    "p25": 0.983,
+    "p50": 1.036,
+    "p75": 1.098,
+    "sample_count": 7929,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.98 <= PR < 1.10",
+      "Bad": "PR < 0.98 or anomaly"
+    },
+    "bias_factor": 0.9762,
+    "train_median_pr": 1.024
+  },
+  "campus-3-site-9": {
+    "siteId": "campus-3-site-9",
+    "campusKey": 3,
+    "siteKey": 9,
+    "p25": 0.983,
+    "p50": 1.036,
+    "p75": 1.098,
+    "sample_count": 7929,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.98 <= PR < 1.10",
+      "Bad": "PR < 0.98 or anomaly"
+    },
+    "bias_factor": 0.9762,
+    "train_median_pr": 1.024
+  },
+  "3_10": {
+    "siteId": "campus-3-site-10",
+    "campusKey": 3,
+    "siteKey": 10,
+    "p25": 1.089,
+    "p50": 1.263,
+    "p75": 1.465,
+    "sample_count": 17789,
+    "grades": {
+      "Very Good": "PR >= 1.47",
+      "Normal": "1.09 <= PR < 1.47",
+      "Bad": "PR < 1.09 or anomaly"
+    },
+    "bias_factor": 1.0239,
+    "train_median_pr": 0.977
+  },
+  "campus-3-site-10": {
+    "siteId": "campus-3-site-10",
+    "campusKey": 3,
+    "siteKey": 10,
+    "p25": 1.089,
+    "p50": 1.263,
+    "p75": 1.465,
+    "sample_count": 17789,
+    "grades": {
+      "Very Good": "PR >= 1.47",
+      "Normal": "1.09 <= PR < 1.47",
+      "Bad": "PR < 1.09 or anomaly"
+    },
+    "bias_factor": 1.0239,
+    "train_median_pr": 0.977
+  },
+  "3_11": {
+    "siteId": "campus-3-site-11",
+    "campusKey": 3,
+    "siteKey": 11,
+    "p25": 0.895,
+    "p50": 1.084,
+    "p75": 1.32,
+    "sample_count": 7701,
+    "grades": {
+      "Very Good": "PR >= 1.32",
+      "Normal": "0.89 <= PR < 1.32",
+      "Bad": "PR < 0.89 or anomaly"
+    },
+    "bias_factor": 0.9959,
+    "train_median_pr": 1.004
+  },
+  "campus-3-site-11": {
+    "siteId": "campus-3-site-11",
+    "campusKey": 3,
+    "siteKey": 11,
+    "p25": 0.895,
+    "p50": 1.084,
+    "p75": 1.32,
+    "sample_count": 7701,
+    "grades": {
+      "Very Good": "PR >= 1.32",
+      "Normal": "0.89 <= PR < 1.32",
+      "Bad": "PR < 0.89 or anomaly"
+    },
+    "bias_factor": 0.9959,
+    "train_median_pr": 1.004
+  },
+  "3_12": {
+    "siteId": "campus-3-site-12",
+    "campusKey": 3,
+    "siteKey": 12,
+    "p25": 0.67,
+    "p50": 0.825,
+    "p75": 0.996,
+    "sample_count": 18942,
+    "grades": {
+      "Very Good": "PR >= 1.00",
+      "Normal": "0.67 <= PR < 1.00",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0027,
+    "train_median_pr": 0.997
+  },
+  "campus-3-site-12": {
+    "siteId": "campus-3-site-12",
+    "campusKey": 3,
+    "siteKey": 12,
+    "p25": 0.67,
+    "p50": 0.825,
+    "p75": 0.996,
+    "sample_count": 18942,
+    "grades": {
+      "Very Good": "PR >= 1.00",
+      "Normal": "0.67 <= PR < 1.00",
+      "Bad": "PR < 0.67 or anomaly"
+    },
+    "bias_factor": 1.0027,
+    "train_median_pr": 0.997
+  },
+  "3_13": {
+    "siteId": "campus-3-site-13",
+    "campusKey": 3,
+    "siteKey": 13,
+    "p25": 0.797,
+    "p50": 1.034,
+    "p75": 1.242,
+    "sample_count": 15608,
+    "grades": {
+      "Very Good": "PR >= 1.24",
+      "Normal": "0.80 <= PR < 1.24",
+      "Bad": "PR < 0.80 or anomaly"
+    },
+    "bias_factor": 1.0122,
+    "train_median_pr": 0.988
+  },
+  "campus-3-site-13": {
+    "siteId": "campus-3-site-13",
+    "campusKey": 3,
+    "siteKey": 13,
+    "p25": 0.797,
+    "p50": 1.034,
+    "p75": 1.242,
+    "sample_count": 15608,
+    "grades": {
+      "Very Good": "PR >= 1.24",
+      "Normal": "0.80 <= PR < 1.24",
+      "Bad": "PR < 0.80 or anomaly"
+    },
+    "bias_factor": 1.0122,
+    "train_median_pr": 0.988
+  },
+  "4_41": {
+    "siteId": "campus-4-site-41",
+    "campusKey": 4,
+    "siteKey": 41,
+    "p25": 0.977,
+    "p50": 1.169,
+    "p75": 1.474,
+    "sample_count": 19424,
+    "grades": {
+      "Very Good": "PR >= 1.47",
+      "Normal": "0.98 <= PR < 1.47",
+      "Bad": "PR < 0.98 or anomaly"
+    },
+    "bias_factor": 0.9762,
+    "train_median_pr": 1.024
+  },
+  "campus-4-site-41": {
+    "siteId": "campus-4-site-41",
+    "campusKey": 4,
+    "siteKey": 41,
+    "p25": 0.977,
+    "p50": 1.169,
+    "p75": 1.474,
+    "sample_count": 19424,
+    "grades": {
+      "Very Good": "PR >= 1.47",
+      "Normal": "0.98 <= PR < 1.47",
+      "Bad": "PR < 0.98 or anomaly"
+    },
+    "bias_factor": 0.9762,
+    "train_median_pr": 1.024
+  },
+  "5_42": {
+    "siteId": "campus-5-site-42",
+    "campusKey": 5,
+    "siteKey": 42,
+    "p25": 0.79,
+    "p50": 0.938,
+    "p75": 1.097,
+    "sample_count": 17302,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.79 <= PR < 1.10",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 1.0255,
+    "train_median_pr": 0.975
+  },
+  "campus-5-site-42": {
+    "siteId": "campus-5-site-42",
+    "campusKey": 5,
+    "siteKey": 42,
+    "p25": 0.79,
+    "p50": 0.938,
+    "p75": 1.097,
+    "sample_count": 17302,
+    "grades": {
+      "Very Good": "PR >= 1.10",
+      "Normal": "0.79 <= PR < 1.10",
+      "Bad": "PR < 0.79 or anomaly"
+    },
+    "bias_factor": 1.0255,
+    "train_median_pr": 0.975
+  }
+}

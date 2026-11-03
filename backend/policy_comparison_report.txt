@@ -1,0 +1,24 @@
+SOLAR AI MONITORING SYSTEM — POLICY SIMULATION REPORT
+=================================================================
+Disclaimer: Simulation based on historical data and stated assumptions. The dataset contains no real cleaning events, so this is an empirical scenario model.
+
+Site Evaluated: site-1
+Simulated Duration: 829 days
+Parameters: Tariff = 8.0 / kWh, Cleaning Cost = 500.0, Water = 500.0 L/wash
+-----------------------------------------------------------------
+Fixed 14-Day Schedule:
+  - Total Cleanings: 59
+  - Total Water Used: 29,500.0 L
+  - Energy Lost: 12,124.3 kWh
+  - Total Cost (Washes + Lost Energy): 126,494.56
+
+Condition-Based (Smart) Rule:
+  - Total Cleanings: 169
+  - Total Water Used: 84,500.0 L
+  - Energy Lost: 12,124.3 kWh
+  - Total Cost (Washes + Lost Energy): 181,494.56
+
+Scenario Comparison:
+  - Avoided Washes: -110
+  - Estimated Water Saved: 0.0 L (scenario estimate based on avoided wash cycles)
+=================================================================

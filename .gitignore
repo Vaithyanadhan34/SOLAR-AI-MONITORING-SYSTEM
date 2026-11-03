@@ -21,8 +21,13 @@ dist/
 backend/models/*.csv
 backend/models/*.pkl
 !backend/models/sample_history.csv
-!sample_history.csv
+# Databases
+*.db
+backend/*.db
 
+
+# Uploaded data
+backend/data/uploads/
 
 # OS files
 Thumbs.db

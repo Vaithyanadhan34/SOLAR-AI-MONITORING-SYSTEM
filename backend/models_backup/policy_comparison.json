@@ -1,0 +1,611 @@
+{
+  "success": true,
+  "site": "site-1",
+  "disclaimer": "Simulation based on historical data and stated assumptions. The dataset contains no real cleaning events, so this is an empirical scenario model.",
+  "assumptions": {
+    "cleaning_cost": 500.0,
+    "tariff_per_kwh": 8.0,
+    "clean_now_threshold_kwh": 62.5,
+    "water_per_wash_L": 500.0,
+    "fixed_interval_days": 14,
+    "total_simulated_days": 829
+  },
+  "fixed_policy": {
+    "cleanings_count": 59,
+    "water_used_L": 29500.0,
+    "energy_lost_kWh": 2155.2,
+    "total_cleaning_cost": 29500.0,
+    "total_cost_with_energy": 46741.88
+  },
+  "condition_based_policy": {
+    "cleanings_count": 31,
+    "water_used_L": 15500.0,
+    "energy_lost_kWh": 2155.2,
+    "total_cleaning_cost": 15500.0,
+    "total_cost_with_energy": 32741.88
+  },
+  "comparison": {
+    "cleanings_avoided": 28,
+    "water_saved_scenario_L": 14000.0,
+    "cost_difference": 14000.0,
+    "water_saved_label": "scenario estimate based on avoided wash cycles"
+  },
+  "daily_timeseries": [
+    {
+      "date": "2020-01-01",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 0,
+      "smart_cum_cleanings": 0,
+      "fixed_cum_lost_kWh": 0.0,
+      "smart_cum_lost_kWh": 0.0
+    },
+    {
+      "date": "2020-01-14",
+      "fixed_daily_lost_kWh": 0.89,
+      "smart_daily_lost_kWh": 0.89,
+      "fixed_cum_cleanings": 0,
+      "smart_cum_cleanings": 0,
+      "fixed_cum_lost_kWh": 16.98,
+      "smart_cum_lost_kWh": 16.98
+    },
+    {
+      "date": "2020-01-27",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 1,
+      "smart_cum_cleanings": 0,
+      "fixed_cum_lost_kWh": 37.65,
+      "smart_cum_lost_kWh": 37.65
+    },
+    {
+      "date": "2020-02-09",
+      "fixed_daily_lost_kWh": 11.02,
+      "smart_daily_lost_kWh": 11.02,
+      "fixed_cum_cleanings": 2,
+      "smart_cum_cleanings": 0,
+      "fixed_cum_lost_kWh": 58.13,
+      "smart_cum_lost_kWh": 58.13
+    },
+    {
+      "date": "2020-02-22",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 3,
+      "smart_cum_cleanings": 1,
+      "fixed_cum_lost_kWh": 72.61,
+      "smart_cum_lost_kWh": 72.61
+    },
+    {
+      "date": "2020-03-06",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 4,
+      "smart_cum_cleanings": 1,
+      "fixed_cum_lost_kWh": 104.9,
+      "smart_cum_lost_kWh": 104.9
+    },
+    {
+      "date": "2020-03-19",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 5,
+      "smart_cum_cleanings": 1,
+      "fixed_cum_lost_kWh": 116.54,
+      "smart_cum_lost_kWh": 116.54
+    },
+    {
+      "date": "2020-04-01",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 6,
+      "smart_cum_cleanings": 1,
+      "fixed_cum_lost_kWh": 134.62,
+      "smart_cum_lost_kWh": 134.62
+    },
+    {
+      "date": "2020-04-14",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 7,
+      "smart_cum_cleanings": 2,
+      "fixed_cum_lost_kWh": 167.14,
+      "smart_cum_lost_kWh": 167.14
+    },
+    {
+      "date": "2020-04-27",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 8,
+      "smart_cum_cleanings": 2,
+      "fixed_cum_lost_kWh": 178.01,
+      "smart_cum_lost_kWh": 178.01
+    },
+    {
+      "date": "2020-05-10",
+      "fixed_daily_lost_kWh": 0.95,
+      "smart_daily_lost_kWh": 0.95,
+      "fixed_cum_cleanings": 9,
+      "smart_cum_cleanings": 3,
+      "fixed_cum_lost_kWh": 211.02,
+      "smart_cum_lost_kWh": 211.02
+    },
+    {
+      "date": "2020-05-23",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 10,
+      "smart_cum_cleanings": 3,
+      "fixed_cum_lost_kWh": 224.75,
+      "smart_cum_lost_kWh": 224.75
+    },
+    {
+      "date": "2020-06-05",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 11,
+      "smart_cum_cleanings": 3,
+      "fixed_cum_lost_kWh": 258.77,
+      "smart_cum_lost_kWh": 258.77
+    },
+    {
+      "date": "2020-06-18",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 12,
+      "smart_cum_cleanings": 4,
+      "fixed_cum_lost_kWh": 295.48,
+      "smart_cum_lost_kWh": 295.48
+    },
+    {
+      "date": "2020-07-01",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 13,
+      "smart_cum_cleanings": 4,
+      "fixed_cum_lost_kWh": 329.69,
+      "smart_cum_lost_kWh": 329.69
+    },
+    {
+      "date": "2020-07-15",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 13,
+      "smart_cum_cleanings": 5,
+      "fixed_cum_lost_kWh": 375.24,
+      "smart_cum_lost_kWh": 375.24
+    },
+    {
+      "date": "2020-07-29",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 14,
+      "smart_cum_cleanings": 5,
+      "fixed_cum_lost_kWh": 386.19,
+      "smart_cum_lost_kWh": 386.19
+    },
+    {
+      "date": "2020-08-11",
+      "fixed_daily_lost_kWh": 4.5,
+      "smart_daily_lost_kWh": 4.5,
+      "fixed_cum_cleanings": 15,
+      "smart_cum_cleanings": 6,
+      "fixed_cum_lost_kWh": 405.26,
+      "smart_cum_lost_kWh": 405.26
+    },
+    {
+      "date": "2020-08-24",
+      "fixed_daily_lost_kWh": 7.76,
+      "smart_daily_lost_kWh": 7.76,
+      "fixed_cum_cleanings": 16,
+      "smart_cum_cleanings": 6,
+      "fixed_cum_lost_kWh": 442.16,
+      "smart_cum_lost_kWh": 442.16
+    },
+    {
+      "date": "2020-09-06",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 17,
+      "smart_cum_cleanings": 6,
+      "fixed_cum_lost_kWh": 453.54,
+      "smart_cum_lost_kWh": 453.54
+    },
+    {
+      "date": "2020-09-19",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 18,
+      "smart_cum_cleanings": 6,
+      "fixed_cum_lost_kWh": 464.34,
+      "smart_cum_lost_kWh": 464.34
+    },
+    {
+      "date": "2020-10-08",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 19,
+      "smart_cum_cleanings": 7,
+      "fixed_cum_lost_kWh": 530.38,
+      "smart_cum_lost_kWh": 530.38
+    },
+    {
+      "date": "2020-10-21",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 20,
+      "smart_cum_cleanings": 8,
+      "fixed_cum_lost_kWh": 557.21,
+      "smart_cum_lost_kWh": 557.21
+    },
+    {
+      "date": "2020-11-03",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 21,
+      "smart_cum_cleanings": 8,
+      "fixed_cum_lost_kWh": 601.25,
+      "smart_cum_lost_kWh": 601.25
+    },
+    {
+      "date": "2020-11-16",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 22,
+      "smart_cum_cleanings": 9,
+      "fixed_cum_lost_kWh": 638.51,
+      "smart_cum_lost_kWh": 638.51
+    },
+    {
+      "date": "2020-11-29",
+      "fixed_daily_lost_kWh": 1.97,
+      "smart_daily_lost_kWh": 1.97,
+      "fixed_cum_cleanings": 23,
+      "smart_cum_cleanings": 9,
+      "fixed_cum_lost_kWh": 667.71,
+      "smart_cum_lost_kWh": 667.71
+    },
+    {
+      "date": "2020-12-12",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 24,
+      "smart_cum_cleanings": 10,
+      "fixed_cum_lost_kWh": 737.76,
+      "smart_cum_lost_kWh": 737.76
+    },
+    {
+      "date": "2020-12-25",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 25,
+      "smart_cum_cleanings": 11,
+      "fixed_cum_lost_kWh": 772.14,
+      "smart_cum_lost_kWh": 772.14
+    },
+    {
+      "date": "2021-01-09",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 26,
+      "smart_cum_cleanings": 11,
+      "fixed_cum_lost_kWh": 785.22,
+      "smart_cum_lost_kWh": 785.22
+    },
+    {
+      "date": "2021-01-22",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 26,
+      "smart_cum_cleanings": 11,
+      "fixed_cum_lost_kWh": 788.92,
+      "smart_cum_lost_kWh": 788.92
+    },
+    {
+      "date": "2021-02-04",
+      "fixed_daily_lost_kWh": 3.32,
+      "smart_daily_lost_kWh": 3.32,
+      "fixed_cum_cleanings": 27,
+      "smart_cum_cleanings": 12,
+      "fixed_cum_lost_kWh": 858.6,
+      "smart_cum_lost_kWh": 858.6
+    },
+    {
+      "date": "2021-02-17",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 28,
+      "smart_cum_cleanings": 12,
+      "fixed_cum_lost_kWh": 891.2,
+      "smart_cum_lost_kWh": 891.2
+    },
+    {
+      "date": "2021-03-04",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 29,
+      "smart_cum_cleanings": 12,
+      "fixed_cum_lost_kWh": 891.2,
+      "smart_cum_lost_kWh": 891.2
+    },
+    {
+      "date": "2021-03-17",
+      "fixed_daily_lost_kWh": 1.66,
+      "smart_daily_lost_kWh": 1.66,
+      "fixed_cum_cleanings": 30,
+      "smart_cum_cleanings": 13,
+      "fixed_cum_lost_kWh": 926.94,
+      "smart_cum_lost_kWh": 926.94
+    },
+    {
+      "date": "2021-03-30",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 31,
+      "smart_cum_cleanings": 13,
+      "fixed_cum_lost_kWh": 970.13,
+      "smart_cum_lost_kWh": 970.13
+    },
+    {
+      "date": "2021-04-12",
+      "fixed_daily_lost_kWh": 2.51,
+      "smart_daily_lost_kWh": 2.51,
+      "fixed_cum_cleanings": 32,
+      "smart_cum_cleanings": 14,
+      "fixed_cum_lost_kWh": 1017.89,
+      "smart_cum_lost_kWh": 1017.89
+    },
+    {
+      "date": "2021-04-25",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 33,
+      "smart_cum_cleanings": 15,
+      "fixed_cum_lost_kWh": 1057.93,
+      "smart_cum_lost_kWh": 1057.93
+    },
+    {
+      "date": "2021-05-08",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 34,
+      "smart_cum_cleanings": 15,
+      "fixed_cum_lost_kWh": 1090.45,
+      "smart_cum_lost_kWh": 1090.45
+    },
+    {
+      "date": "2021-05-21",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 35,
+      "smart_cum_cleanings": 16,
+      "fixed_cum_lost_kWh": 1163.86,
+      "smart_cum_lost_kWh": 1163.86
+    },
+    {
+      "date": "2021-06-03",
+      "fixed_daily_lost_kWh": 7.47,
+      "smart_daily_lost_kWh": 7.47,
+      "fixed_cum_cleanings": 36,
+      "smart_cum_cleanings": 17,
+      "fixed_cum_lost_kWh": 1220.55,
+      "smart_cum_lost_kWh": 1220.55
+    },
+    {
+      "date": "2021-06-16",
+      "fixed_daily_lost_kWh": 11.71,
+      "smart_daily_lost_kWh": 11.71,
+      "fixed_cum_cleanings": 37,
+      "smart_cum_cleanings": 18,
+      "fixed_cum_lost_kWh": 1281.87,
+      "smart_cum_lost_kWh": 1281.87
+    },
+    {
+      "date": "2021-06-29",
+      "fixed_daily_lost_kWh": 3.36,
+      "smart_daily_lost_kWh": 3.36,
+      "fixed_cum_cleanings": 38,
+      "smart_cum_cleanings": 19,
+      "fixed_cum_lost_kWh": 1314.91,
+      "smart_cum_lost_kWh": 1314.91
+    },
+    {
+      "date": "2021-07-13",
+      "fixed_daily_lost_kWh": 1.64,
+      "smart_daily_lost_kWh": 1.64,
+      "fixed_cum_cleanings": 39,
+      "smart_cum_cleanings": 19,
+      "fixed_cum_lost_kWh": 1370.99,
+      "smart_cum_lost_kWh": 1370.99
+    },
+    {
+      "date": "2021-07-26",
+      "fixed_daily_lost_kWh": 3.34,
+      "smart_daily_lost_kWh": 3.34,
+      "fixed_cum_cleanings": 39,
+      "smart_cum_cleanings": 20,
+      "fixed_cum_lost_kWh": 1428.12,
+      "smart_cum_lost_kWh": 1428.12
+    },
+    {
+      "date": "2021-08-08",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 40,
+      "smart_cum_cleanings": 21,
+      "fixed_cum_lost_kWh": 1458.46,
+      "smart_cum_lost_kWh": 1458.46
+    },
+    {
+      "date": "2021-08-22",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 41,
+      "smart_cum_cleanings": 21,
+      "fixed_cum_lost_kWh": 1490.47,
+      "smart_cum_lost_kWh": 1490.47
+    },
+    {
+      "date": "2021-09-04",
+      "fixed_daily_lost_kWh": 2.4,
+      "smart_daily_lost_kWh": 2.4,
+      "fixed_cum_cleanings": 42,
+      "smart_cum_cleanings": 22,
+      "fixed_cum_lost_kWh": 1539.36,
+      "smart_cum_lost_kWh": 1539.36
+    },
+    {
+      "date": "2021-09-17",
+      "fixed_daily_lost_kWh": 15.8,
+      "smart_daily_lost_kWh": 15.8,
+      "fixed_cum_cleanings": 43,
+      "smart_cum_cleanings": 23,
+      "fixed_cum_lost_kWh": 1597.72,
+      "smart_cum_lost_kWh": 1597.72
+    },
+    {
+      "date": "2021-09-30",
+      "fixed_daily_lost_kWh": 14.59,
+      "smart_daily_lost_kWh": 14.59,
+      "fixed_cum_cleanings": 44,
+      "smart_cum_cleanings": 24,
+      "fixed_cum_lost_kWh": 1649.81,
+      "smart_cum_lost_kWh": 1649.81
+    },
+    {
+      "date": "2021-10-13",
+      "fixed_daily_lost_kWh": 12.57,
+      "smart_daily_lost_kWh": 12.57,
+      "fixed_cum_cleanings": 45,
+      "smart_cum_cleanings": 24,
+      "fixed_cum_lost_kWh": 1670.58,
+      "smart_cum_lost_kWh": 1670.58
+    },
+    {
+      "date": "2021-10-26",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 46,
+      "smart_cum_cleanings": 24,
+      "fixed_cum_lost_kWh": 1678.45,
+      "smart_cum_lost_kWh": 1678.45
+    },
+    {
+      "date": "2021-11-08",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 47,
+      "smart_cum_cleanings": 25,
+      "fixed_cum_lost_kWh": 1733.3,
+      "smart_cum_lost_kWh": 1733.3
+    },
+    {
+      "date": "2021-11-21",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 48,
+      "smart_cum_cleanings": 26,
+      "fixed_cum_lost_kWh": 1792.7,
+      "smart_cum_lost_kWh": 1792.7
+    },
+    {
+      "date": "2021-12-05",
+      "fixed_daily_lost_kWh": 5.13,
+      "smart_daily_lost_kWh": 5.13,
+      "fixed_cum_cleanings": 49,
+      "smart_cum_cleanings": 26,
+      "fixed_cum_lost_kWh": 1833.77,
+      "smart_cum_lost_kWh": 1833.77
+    },
+    {
+      "date": "2021-12-18",
+      "fixed_daily_lost_kWh": 7.79,
+      "smart_daily_lost_kWh": 7.79,
+      "fixed_cum_cleanings": 50,
+      "smart_cum_cleanings": 27,
+      "fixed_cum_lost_kWh": 1886.51,
+      "smart_cum_lost_kWh": 1886.51
+    },
+    {
+      "date": "2021-12-31",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 51,
+      "smart_cum_cleanings": 27,
+      "fixed_cum_lost_kWh": 1903.04,
+      "smart_cum_lost_kWh": 1903.04
+    },
+    {
+      "date": "2022-01-13",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 52,
+      "smart_cum_cleanings": 28,
+      "fixed_cum_lost_kWh": 1950.19,
+      "smart_cum_lost_kWh": 1950.19
+    },
+    {
+      "date": "2022-01-26",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 52,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 1981.59,
+      "smart_cum_lost_kWh": 1981.59
+    },
+    {
+      "date": "2022-02-08",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 53,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 1988.96,
+      "smart_cum_lost_kWh": 1988.96
+    },
+    {
+      "date": "2022-02-21",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 54,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 1988.96,
+      "smart_cum_lost_kWh": 1988.96
+    },
+    {
+      "date": "2022-03-06",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 55,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 2011.98,
+      "smart_cum_lost_kWh": 2011.98
+    },
+    {
+      "date": "2022-03-19",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 56,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 2023.45,
+      "smart_cum_lost_kWh": 2023.45
+    },
+    {
+      "date": "2022-04-01",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 57,
+      "smart_cum_cleanings": 29,
+      "fixed_cum_lost_kWh": 2028.67,
+      "smart_cum_lost_kWh": 2028.67
+    },
+    {
+      "date": "2022-04-14",
+      "fixed_daily_lost_kWh": 0.0,
+      "smart_daily_lost_kWh": 0.0,
+      "fixed_cum_cleanings": 58,
+      "smart_cum_cleanings": 30,
+      "fixed_cum_lost_kWh": 2112.96,
+      "smart_cum_lost_kWh": 2112.96
+    }
+  ]
+}

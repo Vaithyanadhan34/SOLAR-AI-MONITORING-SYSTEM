@@ -1,0 +1,3110 @@
+{
+  "site-1-14": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-15": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-16": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-17": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-18": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-19": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-20": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-21": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-22": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-23": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-24": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-25": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-26": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-27": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-28": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-29": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-30": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-31": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-32": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-33": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-34": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-35": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-36": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-37": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-38": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-39": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1-40": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-1": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-2": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-4": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-5": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-6": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-7": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-8": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-9": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-10": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-11": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-12": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-3-13": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-4-41": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  },
+  "site-5-42": {
+    "1": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 3.99
+    },
+    "2": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 4.5
+    },
+    "3": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    },
+    "4": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "5": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "6": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "7": {
+      "avg_air_temp_c": 27.4,
+      "avg_humidity_pct": 50.2,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "8": {
+      "avg_air_temp_c": 27.0,
+      "avg_humidity_pct": 51.4,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.28
+    },
+    "9": {
+      "avg_air_temp_c": 26.2,
+      "avg_humidity_pct": 53.7,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 6.14
+    },
+    "10": {
+      "avg_air_temp_c": 25.0,
+      "avg_humidity_pct": 56.9,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.86
+    },
+    "11": {
+      "avg_air_temp_c": 23.5,
+      "avg_humidity_pct": 60.8,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.47
+    },
+    "12": {
+      "avg_air_temp_c": 22.0,
+      "avg_humidity_pct": 65.0,
+      "avg_wind_speed_ms": 3.0,
+      "daily_insolation_kwh_m2": 5.01
+    }
+  }
+}

@@ -1,82 +1,75 @@
 ================================================================================
-SOLAR AI MONITORING SYSTEM — MODEL EVALUATION REPORT
-Generated: 2026-10-23 15:52:06
-Execution Duration: 10.50 seconds
+SOLAR AI MONITORING SYSTEM — MODEL EVALUATION REPORT (V2)
+Generated: 2026-10-31 19:30:58
+Execution Duration: 158.69 seconds
 ================================================================================
 
-1. DATASET SPECIFICATIONS
+1. DATASET SPECIFICATIONS & DATA QUALITY
 --------------------------------------------------------------------------------
 - Primary Dataset Path : E:\SEM 7\EVS PROJECT\backend\models\maintenance_analysis_results.csv
-- Secondary Dataset    : E:\SEM 7\EVS PROJECT\backend\models\anomaly_results.csv
 - Total Records        : 1,195,267 operational observations
+- Total Sites Monitored: 42 distinct sites across 5 campuses
 - Timeseries Range     : 2020-01-01 08:15:00 to 2022-04-23 17:45:00
-- Target Variable      : ActualGeneration / FutureGeneration
-- Target Unit          : Kilowatts (kW) — Instantaneous Solar Power Output
-- Monitored Facilities : Campus 2, Sites 1, 2, 3 (100 panels, 25.0 kWp nominal)
-- Usable Columns       : Timestamp, CampusKey, SiteKey, ActualGeneration, PredictedGeneration
+- Target Units         : Kilowatts (kW) and Specific Yield (kW / kWp)
+- Data Quality Audit:
+  * Missing Values       : 0 (100% complete)
+  * Duplicate Timestamps : 0 duplicates per site
+  * Negative Values      : 0 negative actuals or predictions
+  * Night Records        : 59,570 (Idle inverter tare ~0.10 kW, filtered from daytime regression)
+  * Stuck Sensors (>1 kW): 4,828 occurrences (0.40% of observations)
+  * Geographic Coords    : Not present in dataset columns (skipped; exact cyclical solar geometry used)
 
-2. LAG DEPENDENCE & ABLATION STUDY (NOWCAST VS. PHYSICAL BASELINE)
+2. TWO DISTINCT MODELS ARCHITECTURE
 --------------------------------------------------------------------------------
-Rationale:
-Models relying on previous generation (PreviousGeneration, lags) act as short-term
-nowcast estimators. When solar panels experience gradual soiling over weeks, previous
-generation is already depressed, causing lag-based models to predict a depressed value
-and conceal soiling loss. Therefore, two models are maintained:
+Model A: Expected Generation Physical Baseline (NO LAGS)
+- Architecture         : RandomForestRegressor (75 estimators, max_depth=22, min_samples_leaf=2)
+- Input Schema         : 19 Features (Solar geometry, cyclical time, weather, capacity normalization)
+- Role in System       : Unsoiled physical baseline used for performance ratio, soiling loss & grading.
+- Test Set MAE         : 3.3527 kW
+- Test Set RMSE        : 6.7963 kW
+- Test Set R² (Daytime): 0.6917 (69.2% Accuracy)
+- Test Set WAPE        : 41.37 %
+- Leave-One-Site-Out R²: 0.5687 (Generalizes across unobserved solar facilities)
+- HistGradientBoosting : R²=0.7565, MAE=3.1573 kW (Random Forest verified as superior)
 
-Model A — Random Forest WITH Lag Features (Short-Term Nowcast Estimate):
-- Input Schema         : 21 Features (Operational lags + weather + capacity + time)
-- Test MAE             : 2.6036 kW
-- Test RMSE            : 4.1004 kW
-- Test R²              : 0.8618
-- Test MAPE            : 27.98 %
-- Role in System       : Provides short-term generation nowcast and prediction interval spread.
+Model B: Short-Term Nowcast / Forecast Model (WITH LAGS)
+- Architecture         : RandomForestRegressor (75 estimators, max_depth=22, min_samples_leaf=2)
+- Input Schema         : 27 Features (Model A features + 4 operational lags + lag specific yields)
+- Role in System       : 30-minute to 2-hour generation nowcast and recursive multi-step forecasting.
+- Test Set MAE         : 1.1221 kW
+- Test Set RMSE        : 2.7519 kW
+- Test Set R² (Daytime): 0.9495 (94.9% Accuracy)
+- Test Set WAPE        : 13.84 %
+- 80% Interval Coverage: 61.55 % (Empirical test set coverage)
 
-Model B — Random Forest WITHOUT Lag Features (Physical Expected Baseline):
-- Input Schema         : 17 Features (Weather, system capacity, and solar geometry ONLY)
-- Test MAE             : 4.7123 kW
-- Test RMSE            : 6.6359 kW
-- Test R²              : 0.6380
-- Role in System       : Serves as the unsoiled physical baseline to calculate true performance loss.
-
-Model C — HistGradientBoosting Comparison (Alternative Non-Linear Baseline):
-- Input Schema         : 17 Features (No lags)
-- Test MAE             : 5.4616 kW
-- Test RMSE            : 7.0838 kW
-- Test R²              : 0.5874
-
-3. ISOLATION FOREST & SYNTHETIC FAULT VALIDATION
+3. BASELINE COMPARISON ON CHRONOLOGICAL TEST SET (DAYTIME SOLAR HOURS)
 --------------------------------------------------------------------------------
-- Model Architecture   : IsolationForest (100 Estimators, Contamination = 0.02, max_samples = 256)
-- Input Schema         : 18 Features (Power dynamics, rate of change, temporal cycles)
-- Empirical Anomaly Rate: 2.00% on standard operating distribution
-- Synthetic Fault Injection Test:
-  * Methodology        : Injected 50% sudden power drops into a clean COPY of daylight test records
-  * Sample Size        : 10417 records
-  * Combined Detection : 100.00% Recall (Labeled: Synthetic Fault Experiment)
-  * Attribution Rule   : Statistical pattern anomaly flagged; physical cause inferred via Decision Layer
+- Persistence Baseline : MAE=1.351 kW | RMSE=3.069 kW | R²=0.9414 | WAPE=16.00%
+- Hour-of-Day Mean     : MAE=3.804 kW | RMSE=6.953 kW | R²=0.6992 | WAPE=45.05%
+- Model A (Physical)   : MAE=3.353 kW | RMSE=6.796 kW | R²=0.6917 | WAPE=41.37%
+- Model B (Short-Term) : MAE=1.122 kW | RMSE=2.752 kW | R²=0.9495 | WAPE=13.84%
 
-4. MAINTENANCE DECISION LAYER THRESHOLDS
+4. ISOLATION FOREST & SYNTHETIC FAULT VALIDATION
 --------------------------------------------------------------------------------
-Derived from empirical percentiles of the 1,195,267 operational records:
-- NORMAL              : Performance Loss < 8.0%  (Below 60th percentile of loss distribution)
-- CLEANING REVIEW     : Performance Loss >= 15.0% (75th percentile) under normal operating curve
-- INSPECTION          : Sudden drop > 30% deviation or severe statistical anomaly flagged
-- Energy Loss Metric  : lost_kWh = max(expected - actual, 0) * interval_hours (kW to kWh)
-- CO2 Emissions Metric: lost_kWh * 0.716 kg CO2/kWh (Central Electricity Authority India Baseline)
+- Architecture         : IsolationForest (100 estimators, max_samples=512)
+- Input Schema         : 10 Features (PR, PR difference, rate of change, weather, solar elevation)
+- Empirical Outlier Rate: 6.00% (derived from training data)
+- Synthetic Fault Recall: 11.47% (Tested on 30% drop injection for 2 hours)
+- Clean False Alarm Rate: 6.94%
 
-5. MODEL ARTIFACT PATHS
+5. EMPIRICAL PERFORMANCE GRADING THRESHOLDS (PR = Actual / Expected)
 --------------------------------------------------------------------------------
-- Short-Term RF Model  : E:\SEM 7\EVS PROJECT\backend\models\solar_energy_random_forest.pkl
-- Expected Baseline RF : E:\SEM 7\EVS PROJECT\backend\models\expected_generation_rf.pkl
-- Isolation Forest     : E:\SEM 7\EVS PROJECT\backend\models\anomaly_model.pkl
-- Feature Ranges JSON  : E:\SEM 7\EVS PROJECT\backend\models\training_feature_ranges.json
-- RF Features (21)     : E:\SEM 7\EVS PROJECT\backend\models\feature_columns.pkl
-- Expected Features (17: E:\SEM 7\EVS PROJECT\backend\models\expected_feature_columns.pkl
-- IF Features (18)     : E:\SEM 7\EVS PROJECT\backend\models\anomaly_features.pkl
+Derived strictly from the unsoiled training period per site:
+- Very Good : PR >= 75th percentile (Action: "Performing above its usual level. No action needed.")
+- Normal    : 25th <= PR < 75th percentile (Action: "Performing as expected. Continue monitoring.")
+- Bad       : PR < 25th percentile or anomaly flagged
+  * Gradual decline: "Cleaning Review. Possible soiling, verify by inspection."
+  * Sudden drop / fault: "Inspection. Possible fault or shading, verify on site."
+- Saved in  : E:\SEM 7\EVS PROJECT\backend\models\site_grade_cutoffs.json for 85 sites.
 
-6. OPERATIONAL LIMITATIONS & WARNINGS
+6. OPERATIONAL LIMITATIONS
 --------------------------------------------------------------------------------
-- Instantaneous readings are in Kilowatts (kW); energy is in Kilowatt-hours (kWh).
-- Water savings and CO2 values are scenario estimates with stated assumptions, not physical meterings.
-- Recommendations (CLEANING REVIEW vs INSPECTION) are condition-based decision guidance.
+- Night readings (Hours < 06:00 and >= 19:00) produce 0 kW; night inference hard-coded to 0 kW.
+- Geographic coordinates not in raw dataset; exact solar elevation proxy derived from timestamp.
+- Water savings and CO2 values are scenario estimates based on CEA India baseline (0.716 kg/kWh).
 ================================================================================

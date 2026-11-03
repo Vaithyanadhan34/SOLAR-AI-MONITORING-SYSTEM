@@ -52,6 +52,10 @@ export default function AnimatedNumber({ value, decimals = 1, suffix = '', durat
     };
   }, [value, duration]);
 
+  if (value === null || value === undefined) {
+    return <span>--</span>;
+  }
+
   const num = typeof displayValue === 'number' ? displayValue : parseFloat(displayValue) || 0;
   return (
     <span>
